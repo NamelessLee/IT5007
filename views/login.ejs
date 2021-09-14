@@ -1,0 +1,25 @@
+<% layout('layouts/boilerplate') %>
+    <form class="login-form">
+        <h1>
+          <span class="fw-bold">NUS</span> Assistant
+        </h1>
+        <h2 class="text-center">welcome</h2>
+        <div class="form-group">
+          <label for="id">NUSNET ID</label>
+          <input id="id" type="text" placeholder="NUSNET ID" aria-describedby="idHelp" class="form-control"></input>
+          <small id="idHelp" class="form-text text-muted">e.g. E1234567</small>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input id="password" type="password" placeholder="Password" class="form-control"></input>
+        </div>
+        <button class="login-button btn btn-info mt-3 mb-3">
+          Log in
+        </button>
+
+        <div class="text-center">
+          <a href="/sign-up">Sign up</a>
+          <span class="p-2">|</span>
+          <a href="/forget-password">Forgot password</a>
+        </div>
+      </form>
