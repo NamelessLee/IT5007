@@ -4,30 +4,49 @@
           <span class="fw-bold">NUS</span> Assistant
         </h1>
         <h2 class="text-center">welcome</h2>
+        
         <div class="form-group">
           <label for="id">NUSNET ID</label>
           <input id="id" type="text" placeholder="NUSNET ID" aria-describedby="idHelp" class="form-control"></input>
           <small id="idHelp" class="form-text text-muted">Please type in valid ID. e.g. E1234567</small>
         </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input id="password" type="password" placeholder="Password" class="form-control"></input>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="stf" value="option1" checked>
+          <label class="form-check-label" for="stf">
+            stf
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="stu" value="option2">
+          <label class="form-check-label" for="stu">
+            stu
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="ext" value="option2">
+          <label class="form-check-label" for="ext">
+            ext
+          </label>
         </div>
         <div class="form-group">
           <label for="password">Password</label>
           <input id="password" type="password" placeholder="Password" class="form-control"></input>
         </div>
         <div class="form-group">
-          <label for="password">Password</label>
-          <input id="password" type="password" placeholder="Password" class="form-control"></input>
+          <label for="confirmPassword">Confirm Password</label>
+          <input id="confirmPassword" type="password" placeholder="Confirm Password" class="form-control"></input>
         </div>
         <div class="form-group">
-          <label for="password">Password</label>
-          <input id="password" type="password" placeholder="Password" class="form-control"></input>
+          <label for="dorm">Dormitory Number</label>
+          <input id="dorm" type="text" placeholder="Dormitory Number" class="form-control"></input>
         </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input id="password" type="password" placeholder="Password" class="form-control"></input>
+          <div class="form-inline">
+            <div class="form-group">
+            <label for="course">Courses</label>
+            <input id="course" type="text" placeholder="Course" class="form-control"></input>
+            <small id="courseHelp" class="form-text text-muted">Please type in valid course number. e.g. CS3443</small>
+            <button class="btn btn-info">Add Course</button>
+          </div>
         </div>
         <button class="btn btn-info mt-3 mb-3">
           Sign up
