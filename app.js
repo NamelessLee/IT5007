@@ -29,6 +29,10 @@ app.get('/report-health', (req, res) => {
     res.render('report-health');
 })
 
+app.get('/entry', (req, res) => {
+    res.render('entry');
+})
+
 app.listen(3000, () => {
     console.log('Serving on port 3000')
 });
