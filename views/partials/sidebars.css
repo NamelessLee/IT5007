@@ -88,3 +88,14 @@ main {
 
 .fw-semibold { font-weight: 600; }
 .lh-tight { line-height: 1.25; }
+
+
+/* make position fixed relative to window */
+#page-wrap { 
+  width: 600px;
+  position: fixed; 
+}
+
+/* #sidebar { 
+  position: fixed; 
+} */
