@@ -1,6 +1,9 @@
 {
   "dependencies": {
+    "bootstrap": "^5.1.1",
+    "bootstrap-icons": "^1.5.0",
     "ejs-mate": "^3.0.0",
+    "element-ui": "^2.15.6",
     "express": "^4.17.1"
   }
 }
