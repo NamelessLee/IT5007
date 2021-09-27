@@ -37,6 +37,14 @@ app.get('/close-contact', (req, res) => {
     res.render('close-contact');
 })
 
+app.get('/building-management', (req, res) => {
+    res.render('building-management');
+})
+
+app.get('/admin', (req, res) => {
+    res.render('admin');
+})
+
 app.listen(3000, () => {
     console.log('Serving on port 3000')
 });
