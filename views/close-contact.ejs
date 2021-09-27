@@ -1,0 +1,40 @@
+<% layout('layouts/boilerplate') %>
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div class="container-fluid" style="background-color: aliceblue;">
+            <h1 style="text-align: center;">Close Contact Tracing</h1>
+        </div>
+        <h2>Your status: <span class="badge bg-success" id="userStatus">Green</span></h2>
+        
+        <div style="background-color: aliceblue;">
+            <h4 style="text-align: center;">Positive Table</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Date of testing positive</th>
+                        <th scope="col">3 days' trace before positive</th> 
+                    </tr>
+                </thead>
+                <tbody id="positiveTable">
+                    <tr>
+                        <td>2021.9.25</td>
+                        <td>BIZ1-0202, BIZ2-0510, LAW_CR2-1, Y-ArtsStud</td>
+                    </tr>
+                    <tr>
+                        <td>2021.9.20</td>
+                        <td>E1-06-01, EA-02-21, I3-AUD, LT37-03-07A</td>
+                    </tr>
+                    <tr>
+                        <td>2021.9.18</td>
+                        <td>AS1-0201, AS1-0301, Blue_Ocean</td>
+                    </tr>
+                </tbody>
+            </table> 
+        </div>
+    </body>
+
+</html>

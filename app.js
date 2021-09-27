@@ -33,6 +33,10 @@ app.get('/entry', (req, res) => {
     res.render('entry');
 })
 
+app.get('/close-contact', (req, res) => {
+    res.render('close-contact');
+})
+
 app.listen(3000, () => {
     console.log('Serving on port 3000')
 });
