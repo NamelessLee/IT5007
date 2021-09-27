@@ -1,0 +1,68 @@
+<% layout('layouts/boilerplate') %>
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div class="container-fluid" style="background-color: aliceblue;">
+            <h1 style="text-align: center;">Campus Entry & Exit</h1>
+        </div>
+        <span>
+            <button type="button" class="btn btn-outline-primary" onclick="exitCampus()">Exit Campus</button>
+            <button type="button" class="btn btn-outline-success" onclick="enterCampus()">Enter Campus</button>
+        </span>
+        <dialog id="enterCampusDialog" style="border-width: 1px; border-radius: 10px; border-color: darkcyan; background-color: aliceblue;">
+            <form>
+                <label for="fromWhere">From Where:</label>
+                <select id="fromWhere" value="1">
+                    <option value="District 1">District 1</option>
+                    <option value="District 2">District 2</option>
+                    <option value="District 3">District 3</option>
+                    <option value="District 4">District 4</option>
+                </select>
+                <div style="text-align: center;">
+                    <button type="button" class="btn btn-outline-primary" onclick="enterSubmit()">Submit</button>
+                    <button type="button" class="btn btn-outline-danger" onclick="closeSubmit()">Close</button>
+                </div>
+                
+            </form>
+        </dialog>
+        <div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Type</th>
+                        <th scope="col">From where</th>
+                        <th scope="col">Datetime</th>
+                    </tr>
+                </thead>
+                <tbody id="entryTable">
+                    
+                </tbody>
+            </table> 
+        </div>
+        <script type="text/javascript">
+            function exitCampus(){
+                var Datetime = new Date();
+                var entryTable = document.getElementById("entryTable");
+                entryTable.innerHTML += "<tr>" + "<td>" + "Exit" + "</td>" + "<td>" + "" + "</td>" + "<td>" + Datetime + "</td>";
+            }
+            function enterCampus(){
+                var myDialog = document.getElementById("enterCampusDialog");
+                myDialog.show();
+            }
+            function enterSubmit(){
+                var Datetime = new Date();
+                var fromWhere = document.getElementById("fromWhere").value;
+                var myDialog = document.getElementById("enterCampusDialog");
+                myDialog.close();
+                entryTable.innerHTML += "<tr>" + "<td>" + "Enter" + "</td>" + "<td>" + fromWhere + "</td>" + "<td>" + Datetime + "</td>";
+            }
+            function closeSubmit(){
+                var myDialog = document.getElementById("enterCampusDialog");
+                myDialog.close();
+            }
+        </script>
+    </body>
+</html>
