@@ -21,167 +21,170 @@
 </head>
 
 <body style="background-color: lightblue;">
-  <div class="container-fluid">
-    <div class="row">
-      <!-- left part of the page -->
-      <div class="col-7 offset-1 p-3" style="background-color: whitesmoke">
-        <!-- header -->
-        <div id="wrapHeader" class="mt-3 pt-3">
-          <div class="container">
-            <div class="row">
 
-              <div class="col-5">
-                <!-- image -->
-                <img class="img-fluid"
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShdTYZjbRtHmb6F-DbFwf9szADDFFMjRwtig&usqp=CAU">
-              </div>
+  <%- include('./partials/tutor-navbar')%>
 
+    <div class="container-fluid mt-3 pt-3">
+      <div class="row">
+        <!-- left part of the page -->
+        <div class="col-7 offset-1 p-3" style="background-color: whitesmoke">
+          <!-- header -->
+          <div id="wrapHeader" class="mt-3 pt-3">
+            <div class="container">
+              <div class="row">
 
-              <div class="col-7">
-                <div class="h5">
-                  <div class="d-flex justify-content-between">
-                    <div>Tom Smith</div>
-                    <div>$40-60/hr</div>
-                  </div>
+                <div class="col-5">
+                  <!-- image -->
+                  <img class="img-fluid"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShdTYZjbRtHmb6F-DbFwf9szADDFFMjRwtig&usqp=CAU">
                 </div>
-                <div class="text-muted">Physics Master at Imperial College London</div>
-                <div class="stars mt-3">
+
+
+                <div class="col-7">
+                  <div class="h5">
+                    <div class="d-flex justify-content-between">
+                      <div>Tom Smith</div>
+                      <div>$40-60/hr</div>
+                    </div>
+                  </div>
+                  <div class="text-muted">Physics Master at Imperial College London</div>
+                  <div class="stars mt-3">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- about me section -->
+          <div id="wrapInfo" class="pt-3">
+            <h5>About me</h5>
+            I love tutoring and have spent thousands of hours conducting tutorials myself as well as being the student.
+            My work experience speaks to this and some of my previous jobs include being an academic mentor at Eton College
+            and being a learning support assistant at Chestnut Grove Academy. My current employment is a full-time tutor
+            and I'm also in the process of applying for a particle physics PhD. My academic studies include a Physics
+            Masters degree from UCL after obtaining a Bachelors degree...
+          </div>
+          <!-- course number, and expands general description -->
+          <div id="wrapCourse" class="pt-3">
+            <h5>Courses offered</h5>
+            <button type="button" class="btn btn-primary btn-lg" onclick="displayCourseInfo()">CS3443</button>
+            <dialog id="courseDialog"
+              style="width:200px; border-width: 1px; border-radius: 10px; border-color: darkcyan; background-color: aliceblue;">
+              I believe that good communication and a deep understanding of one’s subject is crucial to passing on
+              knowledge to students.
+              <button type="button" class="btn btn-outline-danger" onclick="closeSubmit()">Close</button>
+            </dialog>
+            <button type="button" class="btn btn-primary btn-lg">IT5001</button>
+            <button type="button" class="btn btn-primary btn-lg">FT5309</button>
+
+          </div>
+          <!-- rating & review -->
+          <div id="wrapRating" class="pt-3">
+            <h5>Ratings & Reviews</h5>
+            <div class="container-fluid">
+              <!-- overall summary of reviews -->
+              <div class="row border-bottom py-1">
+                <div class="stars">
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star"></span>
                 </div>
+                <span class="fst-italic">210 reviews</span>
+              </div>
+
+              <!-- beginning of first review -->
+              <div class="row border-bottom py-1">
+                <div class="stars">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <div><strong>Daniel</strong> <span class="text-muted">Student from SoC</span></div>
+                  <div class="fst-italic">20 Dec, 2020</div>
+                </div>
+                <div>
+                  Wonderful tutor! Always cares for me!
+                </div>
 
               </div>
             </div>
           </div>
         </div>
-        <!-- about me section -->
-        <div id="wrapInfo" class="pt-3">
-          <h5>About me</h5>
-          I love tutoring and have spent thousands of hours conducting tutorials myself as well as being the student. My
-          work experience speaks to this and some of my previous jobs include being an academic mentor at Eton College
-          and being a learning support assistant at Chestnut Grove Academy. My current employment is a full-time tutor
-          and I'm also in the process of applying for a particle physics PhD. My academic studies include a Physics
-          Masters degree from UCL after obtaining a Bachelors degree...
-        </div>
-        <!-- course number, and expands general description -->
-        <div id="wrapCourse" class="pt-3">
-          <h5>Courses offered</h5>
-          <button type="button" class="btn btn-primary btn-lg" onclick="displayCourseInfo()">CS3443</button>
-          <dialog id="courseDialog"
-            style="width:200px; border-width: 1px; border-radius: 10px; border-color: darkcyan; background-color: aliceblue;">
-            I believe that good communication and a deep understanding of one’s subject is crucial to passing on
-            knowledge to students.
-            <button type="button" class="btn btn-outline-danger" onclick="closeSubmit()">Close</button>
-          </dialog>
-          <button type="button" class="btn btn-primary btn-lg">IT5001</button>
-          <button type="button" class="btn btn-primary btn-lg">FT5309</button>
 
-        </div>
-        <!-- rating & review -->
-        <div id="wrapRating" class="pt-3">
-          <h5>Ratings & Reviews</h5>
+
+
+
+        <div class="col-4">
           <div class="container-fluid">
-            <!-- overall summary of reviews -->
-            <div class="row border-bottom py-1">
-              <div class="stars">
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
-              </div>
-              <span class="fst-italic">210 reviews</span>
-            </div>
-
-            <!-- beginning of first review -->
-            <div class="row border-bottom py-1">
-              <div class="stars">
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-              </div>
-              <div class="d-flex justify-content-between">
-                <div><strong>Daniel</strong> <span class="text-muted">Student from SoC</span></div>
-                <div class="fst-italic">20 Dec, 2020</div>
-              </div>
-              <div>
-                Wonderful tutor! Always cares for me!
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-
-      <div class="col-4">
-        <div class="container-fluid">
-          <div class="row">
-            <!-- right part of the page -->
-            <div class="col-11  p-3" style="background-color: whitesmoke">
-              <div class="text-center">
-                <h2>Send a message</h2>
-              </div>
-              <div class="form-group mb-3">
-                <label for="exampleFormControlTextarea1">Message</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">
+            <div class="row">
+              <!-- right part of the page -->
+              <div class="col-11  p-3  mt-3 pt-3" style="background-color: whitesmoke">
+                <div class="text-center">
+                  <h2>Send a message</h2>
+                </div>
+                <div class="form-group mb-3">
+                  <label for="exampleFormControlTextarea1">Message</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">
                 Hi Liam, I’m looking for a tutor. Are you available for a free meeting? I’d like to find out more about how you work. I’m looking forward to your reply!
                   </textarea>
 
-              </div>
-              <div class="input-group mb-3">
-                <div class="input-group-btn">
-                  <label class="input-group-text" for="inputGroupSelect01">Course</label>
                 </div>
-                <select class="form-select" aria-label="Default select example">
-                  <option selected>Choose course in interest below</option>
-                  <option value="1">CS3443</option>
-                  <option value="2">IT5001</option>
-                  <option value="3">FT5309</option>
-                </select>
-              </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-btn">
+                    <label class="input-group-text" for="inputGroupSelect01">Course</label>
+                  </div>
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected>Choose course in interest below</option>
+                    <option value="1">CS3443</option>
+                    <option value="2">IT5001</option>
+                    <option value="3">FT5309</option>
+                  </select>
+                </div>
 
-              <div class="mb-3 d-grid gap-2">
-                <button type="button" class="btn btn-info btn-lg btn-block">Send a Message</button>
+                <div class="mb-3 d-grid gap-2">
+                  <button type="button" class="btn btn-info btn-lg btn-block">Send a Message</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
+
+
       </div>
+
 
 
     </div>
 
 
 
-  </div>
-
-
-
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-    crossorigin="anonymous"></script>
-  <script src="../../bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script>
-    function displayCourseInfo() {
-      const courseDialog = document.querySelector("#courseDialog");
-      courseDialog.show();
-    }
-    function closeSubmit() {
-      const courseDialog = document.querySelector("#courseDialog");
-      courseDialog.close();
-    }
-  </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"></script>
+    <script src="../../bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function displayCourseInfo() {
+        const courseDialog = document.querySelector("#courseDialog");
+        courseDialog.show();
+      }
+      function closeSubmit() {
+        const courseDialog = document.querySelector("#courseDialog");
+        courseDialog.close();
+      }
+    </script>
 </body>
 
 </html>
