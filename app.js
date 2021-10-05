@@ -45,6 +45,16 @@ app.get('/admin', (req, res) => {
     res.render('admin');
 })
 
+// tutor module
+// first enter tutor search from homepage sidebar
+app.get('/search-tutor', (req, res) => {
+    res.render('search-tutor');
+})
+
+app.get('/display-tutor', (req, res) => {
+    res.render('display-tutor');
+})
+
 app.listen(3000, () => {
     console.log('Serving on port 3000')
 });
