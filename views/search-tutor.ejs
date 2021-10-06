@@ -23,15 +23,16 @@
     <%- include('./partials/tutor-navbar')%>
 
         <!-- top drop-down bar -->
-        <div class="container-fluid mt-3 pt-3">
+        <div class="container-fluid mt-3 pt-3 mb-3 pb-3">
             <div class="row">
-                <div class="col-10 offset-1" style="background-color: white;">
+                <div class="col-10 offset-1" style="background-color: whitesmoke;">
                     <div class="container">
                         <div class="row">
                             <!-- choose subject -->
-                            <div class="col-2 mt-3 pt-3">
+                            <div class="col-2 mt-3 pt-3 pb-3 container-sm">
                                 <span class="text-muted">SUBJECT</span>
                                 <div class="dropdown">
+
                                     <a class="btn border dropdown-toggle container-fluid" href="#" role="button"
                                         id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                         All subjects
@@ -45,7 +46,7 @@
                                 </div>
                             </div>
                             <!-- choose level: master, doctor... -->
-                            <div class="col-2 mt-3 pt-3">
+                            <div class="col-2 mt-3 pt-3 pb-3">
                                 <span class="text-muted">LEVEL</span>
                                 <div class="dropdown">
                                     <a class="btn border dropdown-toggle container-fluid" href="#" role="button"
@@ -61,7 +62,7 @@
                                 </div>
                             </div>
                             <!-- choose price level -->
-                            <div class="col-2 mt-3 pt-3">
+                            <div class="col-2 mt-3 pt-3 pb-3">
                                 <span class="text-muted">PRICE</span>
                                 <div class="dropdown">
                                     <a class="btn border dropdown-toggle container-fluid" href="#" role="button"
@@ -76,25 +77,39 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-2 mt-3 pt-3">
+                            <!-- choose gender -->
+                            <div class="col-2 mt-3 pt-3 pb-3">
                                 <span class="text-muted">GENDER</span>
-                                <span class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="female" checked>
-                                    <label class="form-check-label" for="female">
-                                        Female
-                                    </label>
+                                <div class="dropdown">
 
-                                </span>
-                                <span class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="male" checked>
-                                    <label class="form-check-label" for="male">
-                                        Male
-                                    </label>
-                                </span>
+                                    <a class="btn border dropdown-toggle container-fluid" href="#" role="button"
+                                        id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                        All gender
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <span class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="female"
+                                                checked>
+                                            <label class="form-check-label" for="female">
+                                                Female
+                                            </label>
+
+                                        </span>
+                                        <span class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="male" checked>
+                                            <label class="form-check-label" for="male">
+                                                Male
+                                            </label>
+                                        </span>
+                                    </div>
+                                </div>
+
+
+
                             </div>
 
                             <!-- choose availability -->
-                            <div class="col-2 mt-3 pt-3">
+                            <div class="col-2 mt-3 pt-3 pb-3">
                                 <span class="text-muted">AVAILABILITY</span>
                                 <div class="dropdown">
                                     <a class="btn border dropdown-toggle container-fluid" href="#" role="button"
@@ -150,8 +165,9 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="col-2 mt-3 pt-3">
-                                Other filters
+                            <div class="col-2 mt-3 pt-3 pb-3">
+                                <span style="color: whitesmoke;">Search</span>
+                                <button type="button" class="btn btn-success container-fluid">Search</button>
                             </div>
                         </div>
                     </div>
@@ -162,27 +178,113 @@
         <div class="container-fluid mt-3 pt-3">
             <div class="row">
                 <div class="col-7 offset-1">
-                    <div class="mt-3 mb-3">
-                        325 tutors available
+                    <div class="mt-3 mb-3 h2">
+                        <em class="p-1" style="background-color: darkblue;color:whitesmoke">325</em> tutors available
+                        online!
                     </div>
-                    <div style="background-color: white;">
-                        I love tutoring and have spent thousands of hours conducting tutorials myself as well as being the
-                        student.
-                        My work experience speaks to this and some of my previous jobs include being an academic mentor at
-                        Eton College
-                        and being a learning support assistant at Chestnut Grove Academy. My current employment is a
-                        full-time tutor
-                        and I'm also in the process of applying for a particle physics PhD. My academic studies include a
-                        Physics
-                        Masters degree from UCL after obtaining a Bachelors degree...
+                    <!-- brief intro of tutor -->
+                    <div class="container-fluid" style="background-color: whitesmoke;">
+                        <div class="row">
+                            <div class="col-3 p-3 border-right">
+                                <img src="https://cdn.mytutor.co.uk/images/tutor-profiles/561051.360_1-1_10.jpg?v=3">
+                            </div>
+                            <div class="col-6 p-3 border-right">
+                                <div class="h5">
+                                    <div>
+                                        <div>Tom Smith</div>
+                                    </div>
+                                </div>
+                                <div class="text-muted">Physics Master at Imperial College London</div>
+                                <div class="small">
+                                    I love tutoring and have spent thousands of hours conducting tutorials myself as
+                                    well as
+                                    being the
+                                    student.
+                                </div>
+                                <div class="pt-1 mt-1">
+                                    <div>Offers: <button class="btn btn-info m-1">CS</button><button
+                                            class="btn btn-info">IS</button></div>
+                                </div>
+                            </div>
+                            <div class="col-3 p-3">
+                                <h5 class="strong">$40-60/hr</h5>
+                                <div class="stars mt-3">
+                                    <span class="fa fa-star checked"></span>
+                                    <span>5</span>
+                                </div>
+                                <div class="fst-italic"><strong>210</strong> reviews</div>
+                                <div class="fst-italic"><strong>49</strong> completed lessons</div>
+                                <div class="mb-1 d-grid gap-2 mt-1">
+                                    <a href="/display-tutor" class="btn btn-success btn-lg btn-block">
+                                        See details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    
+
+                    <!-- brief intro of tutor -->
+                    <div class="container-fluid mt-3" style="background-color: whitesmoke;">
+                        <div class="row">
+                            <div class="col-3 p-3 border-right">
+                                <img src="https://cdn.mytutor.co.uk/images/tutor-profiles/561051.360_1-1_10.jpg?v=3">
+                            </div>
+                            <div class="col-6 p-3 border-right">
+                                <div class="h5">
+                                    <div>
+                                        <div>Tom Smith</div>
+                                    </div>
+                                </div>
+                                <div class="text-muted">Physics Master at Imperial College London</div>
+                                <div class="small">
+                                    I love tutoring and have spent thousands of hours conducting tutorials myself as
+                                    well as
+                                    being the
+                                    student.
+                                </div>
+                                <div class="pt-1 mt-1">
+                                    <div>Offers: <button class="btn btn-info m-1">CS</button><button
+                                            class="btn btn-info">IS</button></div>
+                                </div>
+                            </div>
+                            <div class="col-3 p-3">
+                                <h5 class="strong">$40-60/hr</h5>
+                                <div class="stars mt-3">
+                                    <span class="fa fa-star checked"></span>
+                                    <span>5</span>
+                                </div>
+                                <div class="fst-italic"><strong>210</strong> reviews</div>
+                                <div class="fst-italic"><strong>49</strong> completed lessons</div>
+                                <div class="mb-1 d-grid gap-2 mt-1">
+                                    <a href="/display-tutor" class="btn btn-success btn-lg btn-block">
+                                        See details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
                 <div class="col-3">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-12 offset-1" style="background-color: white;">
-                                I love tutoring and have spent thousands of hours conducting tutorials myself as well as
+                            <!-- display on the right -->
+                            <div class="col-12 offset-1" style="background-color: whitesmoke;">
+                                <div class="h5 mt-3">
+                                    Haven't found satisfactory tutors?
+                                </div>
+                                <div>
+                                    Let our free tutor-matching service do the searching for you. Simply tell us what
+                                    you’re looking for and one of our tutor experts will be in touch with a shortlist of
+                                    tutors just for you.
+                                </div>
+                                <div class="mb-3 d-grid gap-2 mt-3">
+                                    <button type="button" class="btn btn-info btn-lg btn-block">
+                                        Find Specialized
+                                        Tutor
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
