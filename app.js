@@ -59,6 +59,10 @@ app.get('/become-tutor', (req, res) => {
     res.render('become-tutor');
 })
 
+app.get('/tutor-login', (req, res) => {
+    res.render('tutor-login');
+})
+
 app.listen(3000, () => {
     console.log('Serving on port 3000')
 });
