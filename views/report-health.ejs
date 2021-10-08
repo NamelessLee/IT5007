@@ -1,0 +1,79 @@
+<% layout('layouts/boilerplate') %>
+<style>
+  #sidebarHealthReport {
+      background-color: chocolate;
+  }
+</style>
+<div class="container-fluid" style="background-color: aliceblue;">
+  <h1 style="text-align: center;">Daily Health Report</h1>
+</div>
+  <div class="row mt-3">
+    <div class="col-4 offset-4">
+      <form action="/:id" method="POST" class="mb-3 validated-form" novalidate></form>
+      <div class="mb-3">
+        <h6>Please check your body temperature and enter the result.</h6>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Body Temperature" aria-label="Recipient's username"
+            aria-describedby="degree">
+          <span class="input-group-text" id="degree">°C</span>
+        </div>
+      </div>
+      <div class="mb-3">
+
+        <h6>Which type of symptoms do you have for the past few days?</h6>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="fever">
+          <label class="form-check-label" for="fever">
+            Fever
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="cough">
+          <label class="form-check-label" for="cough">
+            Cough
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="cough">
+          <label class="form-check-label" for="cough">
+            Sneeze
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="cough">
+          <label class="form-check-label" for="cough">
+            Headache
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="cough">
+          <label class="form-check-label" for="cough">
+            Dizzy
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="breath">
+          <label class="form-check-label" for="breath">
+            Short of breath
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="chest">
+          <label class="form-check-label" for="chest">
+            Persistent pain in the chest
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="noSymptom" checked>
+          <label class="form-check-label" for="noSymptom">
+            No symptom
+          </label>
+        </div>
+
+      </div>
+      <button class="btn btn-success">Submit</button>
+      </form>
+    </div>
+
+
+  </div>

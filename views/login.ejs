@@ -1,0 +1,31 @@
+<% layout('layouts/boilerplate') %>
+<div class="container-fluid" style="background-color: aliceblue;">
+  <h1 style="text-align: center;">Login</h1>
+</div>
+<div class="container-fluid mt-3 pt-3">
+  <div class="row mt-3">
+    <div class="col-6 offset-3 mt-3">
+      <form class="form-control" style="margin:auto">
+        <div class="form-group">
+          <label for="id">NUSNET ID</label>
+          <input id="id" type="text" placeholder="NUSNET ID" aria-describedby="idHelp" class="form-control"></input>
+          <small id="idHelp" class="form-text text-muted">Please type in valid ID. e.g. E1234567</small>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input id="password" type="password" placeholder="Password" class="form-control"></input>
+        </div>
+        <button class="login-button form-control btn btn-success mt-3 mb-3">
+          Log in
+        </button>
+
+        <div class="text-center">
+          <a href="/sign-up">Sign up</a>
+          <span class="p-2">|</span>
+          <a href="/forget-password">Forgot password</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+    

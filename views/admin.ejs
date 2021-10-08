@@ -1,0 +1,83 @@
+<% layout('layouts/boilerplate') %>
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <style>
+            .myNavi {
+                display: block;
+                color: #666;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+            
+            .myNavi:hover:not(.active) {
+              background-color: #ddd;
+            }
+            
+            .active {
+              color: white;
+              background-color:peachpuff;
+            }
+            #sidebarAdmin {
+                background-color: chocolate;
+            }
+            </style>
+    </head>
+    <body>
+        
+        <div class="container-fluid" style="background-color: aliceblue;">
+            <h1 style="text-align: center;">Administration Sector </h1>
+        </div>
+        <div>
+            <ul style="list-style-type: none;margin: 0;padding: 0;overflow: hidden;border: 1px solid #e7e7e7;background-color: #f3f3f3;">
+                <li style="float: left;"><a style="display: block; color: #666; text-align: center; padding: 14px 16px; text-decoration: none;"class="active" href="#userm">User Management</a></li>
+                <li style="float: left;"><a style="display: block; color: #666; text-align: center; padding: 14px 16px; text-decoration: none;" class="myNavi" href="#ccm">Close Contact Management</a></li>
+                <li style="float: left;"><a style="display: block; color: #666; text-align: center; padding: 14px 16px; text-decoration: none;" class="myNavi" href="#bm">Building Management</a></li>
+                <li style="float: left;"><a style="display: block; color: #666; text-align: center; padding: 14px 16px; text-decoration: none;" class="myNavi" href="#tm">Tutor Management</a></li>
+              </ul>
+        </div>
+        <div style="background-color: peachpuff;">
+            <h3 style="text-align: center;">User Info</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">UserID</th>
+                        <th scope="col">UserName</th>
+                        <th scope="col">UserStatus</th>
+                        <th scope="col">UserClass</th>
+                        <th scope="col">UserTrace</th>
+                        <th scope="col">UserPassword</th>
+                    </tr>
+                </thead>
+                <tbody id="UserTable">
+                    <tr onclick="clickRow(this)">
+                        <td>A0242720R</td>
+                        <td>Li Xinyue</td>
+                        <td>Green</td>
+                        <td><button style="background-color:orange; border-radius: 10px;">view modules</button></td>
+                        <td><button style="background-color:orange; border-radius: 10px;">view trace</button></td>
+                        <td><button style="background-color:orange; border-radius: 10px;">view password</button></td>
+                    </tr>
+                    <tr onclick="clickRow(this)">
+                        <td>A0242694X</td>
+                        <td>Lang Qianqian</td>
+                        <td>Green</td>
+                        <td><button style="background-color:orange; border-radius: 10px;">view modules</button></td>
+                        <td><button style="background-color:orange; border-radius: 10px;">view trace</button></td>
+                        <td><button style="background-color:orange; border-radius: 10px;">view password</button></td>
+                    </tr>
+                    <tr onclick="clickRow(this)">
+                        <td>A0000000A</td>
+                        <td>Somebody</td>
+                        <td><button style="background-color:orangered; border-radius: 10px;">Red</button></td>
+                        <td><button style="background-color:orange; border-radius: 10px;">view modules</button></td>
+                        <td><button style="background-color:orange; border-radius: 10px;">view trace</button></td>
+                        <td><button style="background-color:orange; border-radius: 10px;">view password</button></td>
+                    </tr>
+                </tbody>
+            </table> 
+        </div>
+    </body>
+</html>

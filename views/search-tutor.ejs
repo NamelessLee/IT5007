@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>boilerplate</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/layouts/app.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .dropdown-toggle {
+            width: 100%,
+        }
+    </style>
+</head>
+
+<body style="background-color: lightblue;">
+    <%- include('./partials/tutor-navbar')%>
+
+        <!-- top drop-down bar -->
+        <div class="container-fluid mt-3 pt-3 mb-3 pb-3">
+            <div class="row">
+                <div class="col-10 offset-1" style="background-color: whitesmoke;">
+                    <div class="container">
+                        <div class="row">
+                            <!-- choose subject -->
+                            <div class="col-2 mt-3 pt-3 pb-3 container-sm">
+                                <span class="text-muted">SUBJECT</span>
+                                <div class="dropdown">
+
+                                    <a class="btn border dropdown-toggle container-fluid" href="#" role="button"
+                                        id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                        All subjects
+                                    </a>
+
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <li><a class="dropdown-item" href="#">FinTech</a></li>
+                                        <li><a class="dropdown-item" href="#">Computer Science</a></li>
+                                        <li><a class="dropdown-item" href="#">Information Systems</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- choose level: master, doctor... -->
+                            <div class="col-2 mt-3 pt-3 pb-3">
+                                <span class="text-muted">LEVEL</span>
+                                <div class="dropdown">
+                                    <a class="btn border dropdown-toggle container-fluid" href="#" role="button"
+                                        id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                        All levels
+                                    </a>
+
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <li><a class="dropdown-item" href="#">Doctor</a></li>
+                                        <li><a class="dropdown-item" href="#">Master</a></li>
+                                        <li><a class="dropdown-item" href="#">Bachelor</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- choose price level -->
+                            <div class="col-2 mt-3 pt-3 pb-3">
+                                <span class="text-muted">PRICE</span>
+                                <div class="dropdown">
+                                    <a class="btn border dropdown-toggle container-fluid" href="#" role="button"
+                                        id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                        All prices
+                                    </a>
+
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <li><a class="dropdown-item" href="#">$15 - 25 / h</a></li>
+                                        <li><a class="dropdown-item" href="#">$26 - 35 / h</a></li>
+                                        <li><a class="dropdown-item" href="#">$36 - 45 / h</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- choose gender -->
+                            <div class="col-2 mt-3 pt-3 pb-3">
+                                <span class="text-muted">GENDER</span>
+                                <div class="dropdown">
+
+                                    <a class="btn border dropdown-toggle container-fluid" href="#" role="button"
+                                        id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                        All gender
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <span class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="female"
+                                                checked>
+                                            <label class="form-check-label" for="female">
+                                                Female
+                                            </label>
+
+                                        </span>
+                                        <span class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" value="" id="male" checked>
+                                            <label class="form-check-label" for="male">
+                                                Male
+                                            </label>
+                                        </span>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+                            <!-- choose availability -->
+                            <div class="col-2 mt-3 pt-3 pb-3">
+                                <span class="text-muted">AVAILABILITY</span>
+                                <div class="dropdown">
+                                    <a class="btn border dropdown-toggle container-fluid" href="#" role="button"
+                                        id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                        All availability
+                                    </a>
+
+                                    <form class="dropdown-menu p-4">
+                                        <!-- time of day -->
+                                        <div class="text-muted">Time of Day</div>
+                                        <div class="btn-group" role="group"
+                                            aria-label="Basic radio toggle button group">
+                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
+                                                autocomplete="off" checked>
+                                            <label class="btn btn-success" for="btnradio1">8-12</label>
+
+                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
+                                                autocomplete="off">
+                                            <label class="btn btn-success" for="btnradio2">12-17</label>
+
+                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
+                                                autocomplete="off">
+                                            <label class="btn btn-success" for="btnradio3">19-23</label>
+                                        </div>
+                                        <!-- day of week -->
+                                        <div class="text-muted">Day of Week</div>
+                                        <div class="btn-group" role="group"
+                                            aria-label="Basic radio toggle button group">
+                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
+                                                autocomplete="off" checked>
+                                            <label class="btn btn-success" for="btnradio1">MON</label>
+
+                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
+                                                autocomplete="off">
+                                            <label class="btn btn-success" for="btnradio2">TUE</label>
+
+                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
+                                                autocomplete="off">
+                                            <label class="btn btn-success" for="btnradio3">WED</label>
+                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
+                                                autocomplete="off">
+                                            <label class="btn btn-success" for="btnradio3">THU</label>
+                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
+                                                autocomplete="off">
+                                            <label class="btn btn-success" for="btnradio3">FRI</label>
+                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
+                                                autocomplete="off">
+                                            <label class="btn btn-success" for="btnradio3">SAT</label>
+                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
+                                                autocomplete="off">
+                                            <label class="btn btn-success" for="btnradio3">SUN</label>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-2 mt-3 pt-3 pb-3">
+                                <span style="color: whitesmoke;">Search</span>
+                                <button type="button" class="btn btn-success container-fluid">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid mt-3 pt-3">
+            <div class="row">
+                <div class="col-7 offset-1">
+                    <div class="mt-3 mb-3 h2">
+                        <em class="p-1" style="background-color: darkblue;color:whitesmoke">325</em> tutors available
+                        online!
+                    </div>
+
+                    <!-- brief intro of tutor -->
+                    <div class="container-fluid mt-3" style="background-color: whitesmoke;">
+                        <div class="row">
+                            <div class="col-3 border-right" style="margin:auto">
+                                <img class="container-fluid" src="data:image/png;base64,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">
+                            </div>
+                            <div class="col-6 p-3 border-right">
+                                <div class="h5">
+                                    <div>
+                                        <div>Tom Smith</div>
+                                    </div>
+                                </div>
+                                <div class="text-muted">Master of Computing (General Track)</div>
+                                <div class="small">
+                                    I love tutoring and I am also a big fan of computer science. The thought of combining these two together makes me so excited, and I am happy to help other students in CS.
+                                </div>
+                                <div class="pt-1 mt-1">
+                                    <div>Offers: <button class="btn btn-info m-1">CS</button><button
+                                            class="btn btn-info">FT</button></div>
+                                </div>
+                            </div>
+                            <div class="col-3 p-3">
+                                <h5 class="strong">$40-60/hr</h5>
+                                <div class="stars mt-3">
+                                    <span class="fa fa-star checked"></span>
+                                    <span>5</span>
+                                </div>
+                                <div class="fst-italic"><strong>210</strong> reviews</div>
+                                <div class="fst-italic"><strong>49</strong> completed lessons</div>
+                                <div class="mb-1 d-grid gap-2 mt-3">
+                                    <a href="/display-tutor" class="btn btn-success btn-lg btn-block">
+                                        See details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- brief intro of tutor -->
+                    <div class="container-fluid mt-3" style="background-color: whitesmoke;">
+                        <div class="row">
+                            <div class="col-3 border-right" style="margin:auto">
+                                <img class="container-fluid" src="data:image/png;base64,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">
+                            </div>
+                            <div class="col-6 p-3 border-right">
+                                <div class="h5">
+                                    <div>
+                                        <div>Tom Smith</div>
+                                    </div>
+                                </div>
+                                <div class="text-muted">Master of Computing (General Track)</div>
+                                <div class="small">
+                                    I love tutoring and I am also a big fan of computer science. The thought of combining these two together makes me so excited, and I am happy to help other students in CS.
+                                </div>
+                                <div class="pt-1 mt-1">
+                                    <div>Offers: <button class="btn btn-info m-1">CS</button><button
+                                            class="btn btn-info">FT</button></div>
+                                </div>
+                            </div>
+                            <div class="col-3 p-3">
+                                <h5 class="strong">$40-60/hr</h5>
+                                <div class="stars mt-3">
+                                    <span class="fa fa-star checked"></span>
+                                    <span>5</span>
+                                </div>
+                                <div class="fst-italic"><strong>210</strong> reviews</div>
+                                <div class="fst-italic"><strong>49</strong> completed lessons</div>
+                                <div class="mb-1 d-grid gap-2 mt-3">
+                                    <a href="/display-tutor" class="btn btn-success btn-lg btn-block">
+                                        See details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-3">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <!-- display on the right -->
+                            <div class="col-12 offset-1" style="background-color: whitesmoke;">
+                                <div class="h5 mt-3">
+                                    Haven't found satisfactory tutors?
+                                </div>
+                                <div>
+                                    Your tutor in need might haven't signed up to be a tutor yet. By clicking the button, our service will generate system messages to NUS students complying with your requirements above, and thus will get more tutors posting!
+                                </div>
+                                <div class="mb-3 d-grid gap-2 mt-3">
+                                    <button type="button" class="btn btn-info btn-lg btn-block">
+                                        Find Specialized
+                                        Tutor
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+            crossorigin="anonymous"></script>
+        <script src="../../bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script>
+            // activate nav link
+            (() => {
+                var element = document.getElementById("navFind");
+                element.classList.add("active");
+            })();
+            
+        </script>
+</body>
+
+</html>

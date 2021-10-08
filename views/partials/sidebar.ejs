@@ -1,0 +1,72 @@
+<style>
+  #page-wrap {
+    border-radius: 1em;
+    background-color: #EC760E;
+    font-weight: bold;
+    position: fixed;
+    margin-top: 40px;
+    margin-left: 12px;
+  }
+
+  a.nav-link {
+    color: whitesmoke;
+  }
+</style>
+<div id="page-wrap" class="d-flex flex-column ml-3 p-3 sticky-center">
+  <a href="/" class="d-flex align-items-center mb-3 mb-md-0 text-decoration-none">
+    <span class="fs-4 text-light">MODULES</span>
+  </a>
+  <hr>
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li class="nav-item">
+      <a href="/" class="nav-link" id="sidebarHome">
+        Home
+      </a>
+    </li>
+    <li>
+      <a href="/report-health" class="nav-link" id="sidebarHealthReport">
+        Health Report
+      </a>
+    </li>
+    <li>
+      <a href="/entry" class="nav-link" id="sidebarEntry">
+        Entry & Exit
+      </a>
+    </li>
+    <li>
+      <a href="/close-contact" class="nav-link" id="sidebarCloseContact">
+        Close Contact
+      </a>
+    </li>
+    <li>
+      <a href="/building-management" class="nav-link" id="sidebarBuilding">
+        Building Management
+      </a>
+    </li>
+    <li>
+      <a href="/search-tutor" class="nav-link" id="sidebarTutor">
+        Tutor Matching
+      </a>
+    </li>
+    <li>
+      <a href="/admin" class="nav-link" id="sidebarAdmin">
+        Admin Sector
+      </a>
+    </li>
+  </ul>
+  <hr>
+  <div class="dropdown">
+    <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle text-light" id="dropdownUser1"
+      data-bs-toggle="dropdown" aria-expanded="false">
+      <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+      <span class="text-light">Betty</span>
+    </a>
+    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser1">
+      <li><a class="dropdown-item" href="#" >System messages</a></li>
+      <li>
+        <hr class="dropdown-divider">
+      </li>
+      <li><a class="dropdown-item" href="#">Sign out</a></li>
+    </ul>
+  </div>
+</div>
