@@ -63,6 +63,10 @@ app.get('/tutor-login', (req, res) => {
     res.render('tutor-login');
 })
 
+app.get('/chat', (req, res) => {
+    res.render('chatbox');
+})
+
 app.listen(3000, () => {
     console.log('Serving on port 3000')
 });
