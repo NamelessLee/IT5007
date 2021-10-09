@@ -62,7 +62,7 @@
       <span class="text-light">Betty</span>
     </a>
     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser1">
-      <li><a class="dropdown-item" href="#" >System messages</a></li>
+      <li><a class="dropdown-item" href="#" onclick="genSysMessage()">System messages</a></li>
       <li>
         <hr class="dropdown-divider">
       </li>
@@ -70,3 +70,8 @@
     </ul>
   </div>
 </div>
+<script>
+  function genSysMessage() {
+    alert("Sign up to be a tutor: 2 students would like to take tutor class of CS3001")
+  }
+</script>
