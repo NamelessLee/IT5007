@@ -98,11 +98,12 @@
           <a style="margin-bottom: 10px;" href="#" class="btn btn-primary">My reviews</a><br>
           <a style="margin-bottom: 10px;" href="#" class="btn btn-primary">My completed lessons</a><br>
           <a style="margin-bottom: 10px;" href="#" class="btn btn-primary">Edit my profile</a>
+          <a style="margin-bottom: 10px;" href="#" class="btn btn-danger">Help</a>
         </div>
       </div>
     </div>
     <div class="col-6" id="chat" style="display:none; margin-top: 23px;">
-        <div>
+        <div style="margin-right: 50px;">
             <span style="border:aqua 1px solid; border-radius: 10px; font-size:30px; background-color: white; padding:10px; color:rgb(93, 231, 231)">
                     Chat with Lang Qianqian  
             </span>
@@ -120,53 +121,10 @@
             <img src="./img/calendar.jpg" class="img-fluid" alt="...">
         </div>
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Generate Order</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label class="form-label">Student Name: Lang Qianqian</label>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Student ID: A0242694X</label>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Tutor Name: Tom Smith</label>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Tutor ID: A0242720R</label>
-                        </div>
-                        <div class="mb-3">
-                          <label for="exampleInputEmail1" class="form-label">Module:</label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        </div>
-                        <div class="mb-3">
-                          <label for="exampleInputPassword1" class="form-label">Time:</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Fee:</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Location:</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <button type="reset" class="btn btn-secondary">Reset</button>
-                      </form>
-                </div>
-              </div>
-            </div>
-          </div>
+        
     </div>
     <div class="col-6" id="msgs" style="display: none;">
-        <div  style=" margin: 20px; padding:20px;  border:peachpuff 2px solid; border-radius:10px; background-color: white; float:right; width:100%">
+        <div style=" margin: 20px; padding:20px;  border:peachpuff 2px solid; border-radius:10px; background-color: white; float:right; width:100%">
             <h3>My Messages</h3>
             <ol class="list-group ">
             <a href="javascript:void(0);" onclick="chat()" class="list-group-item list-group-item-action">
@@ -257,6 +215,7 @@
                         </div>
                     </div>
                 </div>
+                
 
         </div>
       </div>
@@ -267,6 +226,53 @@
         Login To Find More</h2>
       <img src="./img/tutorial.jpg" class="img-fluid" alt="...">
     </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Generate Order</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form>
+                  <div class="mb-3">
+                      <label class="form-label">Student Name: Lang Qianqian</label>
+                  </div>
+                  <div class="mb-3">
+                      <label class="form-label">Student ID: A0242694X</label>
+                  </div>
+                  <div class="mb-3">
+                      <label class="form-label">Tutor Name: Tom Smith</label>
+                  </div>
+                  <div class="mb-3">
+                      <label class="form-label">Tutor ID: A0242720R</label>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Module:</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Time:</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                  </div>
+                  <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Fee:</label>
+                      <input type="password" class="form-control" id="exampleInputPassword1">
+                  </div>
+                  <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Location:</label>
+                      <input type="password" class="form-control" id="exampleInputPassword1">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="reset" class="btn btn-secondary">Reset</button>
+                </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
 
   <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
