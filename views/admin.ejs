@@ -33,13 +33,100 @@
         <div>
             <ul style="list-style-type: none;margin: 0;padding: 0;overflow: hidden;border: 1px solid #e7e7e7;background-color: #f3f3f3;">
                 <li style="float: left;"><a style="display: block; color: #666; text-align: center; padding: 14px 16px; text-decoration: none;"class="active" href="#userm">User Management</a></li>
+                <li style="float: left;"><a style="display: block; color: #666; text-align: center; padding: 14px 16px; text-decoration: none;" class="myNavi" href="#rrm">Region Risk Management</a></li>
                 <li style="float: left;"><a style="display: block; color: #666; text-align: center; padding: 14px 16px; text-decoration: none;" class="myNavi" href="#ccm">Close Contact Management</a></li>
                 <li style="float: left;"><a style="display: block; color: #666; text-align: center; padding: 14px 16px; text-decoration: none;" class="myNavi" href="#bm">Building Management</a></li>
                 <li style="float: left;"><a style="display: block; color: #666; text-align: center; padding: 14px 16px; text-decoration: none;" class="myNavi" href="#tm">Tutor Management</a></li>
+                <li style="float: left;"><a style="display: block; color: #666; text-align: center; padding: 14px 16px; text-decoration: none;" class="myNavi" href="#bltm">Bulletin Management</a></li>
               </ul>
         </div>
         <div style="background-color: peachpuff;">
             <h3 style="text-align: center;">User Info</h3>
+            <div class="btn-group" style="margin-left: 20px;">
+                <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  Symptoms
+                </button>
+                <ul class="dropdown-menu" style="padding-left: 10px;">
+                  <li>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Fever
+                        </label>
+                      </div>
+                  </li>
+                  <li>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="cough">
+                        <label class="form-check-label" for="cough">
+                          Cough
+                        </label>
+                      </div>
+                  </li>
+                  <li>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="cough">
+                        <label class="form-check-label" for="cough">
+                          Sneeze
+                        </label>
+                      </div>
+                  </li>
+                  <li>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="cough">
+                        <label class="form-check-label" for="cough">
+                          Headache
+                        </label>
+                      </div>  
+                  </li>
+                  <li>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="cough">
+                        <label class="form-check-label" for="cough">
+                          Dizzy
+                        </label>
+                      </div>
+                  </li>
+                  <li>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="breath">
+                        <label class="form-check-label" for="breath">
+                          Short of breath
+                        </label>
+                      </div>
+                  </li>
+                  <li>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="chest">
+                        <label class="form-check-label" for="chest">
+                          Persistent pain in the chest
+                        </label>
+                      </div>
+                  </li>
+                  <li>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="noSymptom" checked>
+                        <label class="form-check-label" for="noSymptom">
+                          No symptom
+                        </label>
+                      </div>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="form-check form-check-inline" style="margin-left: 20px; ">
+                <input class="form-check-input" type="checkbox" value="" id="closeContactCheck">
+                <label class="form-check-label" for="closeContactCheck">
+                  Close Contact
+                </label>
+              </div>
+
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" value="" id="tutorCheck">
+                <label class="form-check-label" for="tutorCheck">
+                  Tutor
+                </label>
+              </div>
             <table class="table table-striped">
                 <thead>
                     <tr>
