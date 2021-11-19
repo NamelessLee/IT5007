@@ -1,4 +1,6 @@
-function handleLoginSubmit(){
+const dateRegex = new RegExp('^\\d\\d\\d\\d-\\d\\d-\\d\\d');
+
+async function handleLoginSubmit(){
     var form = document.getElementById("loginForm");
     var inputElements = form.getElementsByTagName("input");
     var user = {
@@ -6,18 +8,35 @@ function handleLoginSubmit(){
         password: inputElements[1].value
     }
     console.log("user= " + JSON.stringify(user));
-    findUser(user);
+    var userInDb = await findUser(user);
+    console.log("userInDb="+JSON.stringify(userInDb));
+    var pwd = userInDb.password;
+    if(pwd == user.password){//successful on login
+        sessionStorage.setItem('username',user.username);        
+        alert("successful on login");
+        window.location.href='/';
+        document.getElementById("currentUser").innerText = userInDb.name;
+    }
+    else{
+        alert("Failed. Wrong username or password");
+    }
 }
 
 async function findUser(user) {
-    const query = `query users($username: String){ 
-        User(username: $username) {
-            username password
+    const query = `query {
+        User(user:{
+          username:"${user.username}",
+          password:"${user.password}",
+        }){
+          username
+          password
+          name
+          type
         }
-    }`;
-    var username = user.username;
-    const data = await graphQLFetch(query, { username });
-    console.log("data = " + data);
+      }`;
+    const data = await graphQLFetch(query, { user });
+    console.log("data= " + JSON.stringify(data));
+    return data.User[0];
 }
 
 ///////////////////////////////////////////////////////////////
@@ -25,14 +44,15 @@ async function graphQLFetch(query, variables = {}) {
     console.log("graphQlFetch!!!!");
     console.log("variables= " + JSON.stringify(variables));
     try {
-      const response = await fetch('/graphql', {
+      const response = await fetch('http://localhost:8080/graphql', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json'},
+        withCredentials: true,
         body: JSON.stringify({ query, variables })
       });
       const body = await response.text();
       console.log("body= "+ body);
-/*
+
       const result = JSON.parse(body, jsonDateReviver);
   
       if (result.errors) {
@@ -45,7 +65,7 @@ async function graphQLFetch(query, variables = {}) {
         }
       }
       return result.data;
-      */
+    
     } catch (e) {
       alert(`Error in sending data to server: ${e.message}`);
     }
@@ -55,3 +75,5 @@ async function graphQLFetch(query, variables = {}) {
     if (dateRegex.test(value)) return new Date(value);
     return value;
   }
+
+
