@@ -20,19 +20,32 @@ const resolvers = {
   Query: {
     about: () => aboutMessage,
     User,
+    Test,
   },
 };
 
-async function User() {
-  const users = await db.collection('users').find({}).toArray();
+function Test(_, {id}) {
+  var res = "id="+ id;
+  console.log("id="+ id);
+  return res;
+}
+
+async function User(_, {user}) {
+  let username = user.username;
+  const users = await db.collection('users').find({username: username}).toArray();
+  console.log("users="+ JSON.stringify(users));
   return users;
 }
+
+
 
 async function connectToDb() {
   const client = new MongoClient(url, { useNewUrlParser: true });
   await client.connect();
   console.log('Connected to MongoDB at', url);
   db = client.db();
+  const myCollections = await db.listCollections().toArray();
+  console.log("myCollections= "+ JSON.stringify(myCollections));
 }
 
 const server = new ApolloServer({
