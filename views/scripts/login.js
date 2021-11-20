@@ -43,7 +43,6 @@ async function findUser(user) {
 ///////////////////////////////////////////////////////////////
 async function graphQLFetch(query, variables = {}) {
     console.log("graphQlFetch!!!!");
-    console.log("variables= " + JSON.stringify(variables));
     try {
       const response = await fetch('http://localhost:8080/graphql', {
         method: 'POST',
@@ -52,7 +51,6 @@ async function graphQLFetch(query, variables = {}) {
         body: JSON.stringify({ query, variables })
       });
       const body = await response.text();
-      console.log("body= "+ body);
 
       const result = JSON.parse(body, jsonDateReviver);
   
