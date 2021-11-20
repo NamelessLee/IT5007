@@ -21,6 +21,7 @@ const resolvers = {
     about: () => aboutMessage,
     User,
     Test,
+    Health
   },
 };
 
@@ -37,6 +38,11 @@ async function User(_, {user}) {
   return users;
 }
 
+async function Health(_, {username}) {
+  const health = await db.collection('health').find({username: username}).toArray();
+  console.log("health = " + JSON.stringify(health));
+  return health;
+}
 
 
 async function connectToDb() {

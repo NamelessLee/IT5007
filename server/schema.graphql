@@ -12,8 +12,19 @@ input UserInput {
   password: String
 }
 
+type Health {
+  _id: ID!
+  username: String
+  Date: String
+  temperature: String
+  status: String
+  covid: Int
+  symptoms: [String]
+}
+
 type Query {
   User(user: UserInput!): [User]
   about: String
   Test(id: Int):String
+  Health(username: String!): [Health]
 }

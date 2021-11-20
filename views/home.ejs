@@ -1,35 +1,107 @@
 <% layout('layouts/boilerplate') %>
-<style>
-    #sidebarHome {
-        background-color: chocolate;
-    }
-</style>
+    <style>
+        #sidebarHome {
+            background-color: chocolate;
+        }
+    </style>
     <div class="container-fluid">
         <div class="row">
             <div class="col-8 mt-3 pt-3" style="margin:auto">
                 <div class="mt-3 pt-3">
                     <img class="container-fluid" src="./img/nus-map.png">
-                </div>    
+                </div>
             </div>
             <div class="col-4">
-                <div class="container-fluid mt-3 pb-3 d-flex flex-column justify-content-between" style="background-color: orange; border-radius: 1em">
+                <div class="container-fluid mt-3 pb-3 d-flex flex-column justify-content-between"
+                    style="background-color: orange; border-radius: 1em">
                     <div class="card-body mt-3">
                         <h5 class="card-title text-center mb-3">Personal Health Status</h5>
                         <h6 class="card-title text-center mb-3">Dec 21st, 2021</h6>
-                        <p class="card-text">Body temperature: 37.0°C</p>
-                        <p class="card-text">Health status: yellow</p>
+                        <p class="card-text">Body temperature: <span id="temperature"></span></p>
+                        <p class="card-text">Health status: <span id="status"></span></p>
                     </div>
-   
+
                 </div>
-                <div class="container-fluid mt-3 pb-3 d-flex flex-column justify-content-between" style="background-color: orange; border-radius: 1em">
+                <div class="container-fluid mt-3 pb-3 d-flex flex-column justify-content-between"
+                    style="background-color: orange; border-radius: 1em">
                     <div class="card-body mt-3">
                         <h5 class="card-title text-center mb-3">Bulletin</h5>
                         <p class="card-text">Yesterday, 15 tutors updated available time slots.</p>
-                        <p class="card-text">Yesterday, 2 students of NUS were diagnosed with COVID-19. Students of CS3884 and ST5050 please monitor your health status and avoid contacts with others.</p>
+                        <p class="card-text">Yesterday, 2 students of NUS were diagnosed with COVID-19. Students of
+                            CS3884 and ST5050 please monitor your health status and avoid contacts with others.</p>
                     </div>
-   
+
                 </div>
 
             </div>
         </div>
     </div>
+    <script>
+        function getHealth() {
+            if (sessionStorage.getItem("status") != null) {
+                document.getElementById("status").innerText = sessionStorage.getItem("status");
+                document.getElementById("temperature").innerText = sessionStorage.getItem("temperature");
+            }
+            else {
+                const username = sessionStorage.getItem('username');
+                console.log(username);
+                getHealthFromDB(username);
+            }
+        }
+        async function getHealthFromDB(username) {
+            const query = `query {
+                Health(username: "${username}")
+                {
+                    temperature
+                    status
+                }
+            }`;
+            const data = await graphQLFetch(query, {username});
+            console.log("data = " + JSON.stringify(data));
+            const health = data.Health[0];
+            await sessionStorage.setItem("status", health.status);
+            await sessionStorage.setItem("temperature", health.temperature);
+            document.getElementById("status").innerText = health.status;
+            document.getElementById("temperature").innerText = health.temperature;
+        }
+    
+        window.addEventListener('load', (event => { getHealth(); }))
+        ///////////////////////////////////////////////////////////////
+        async function graphQLFetch(query, variables = {}) {
+            console.log("graphQlFetch!!!!");
+            console.log("variables= " + JSON.stringify(variables));
+            try {
+                const response = await fetch('http://localhost:8080/graphql', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true,
+                    body: JSON.stringify({ query, variables })
+                });
+                const body = await response.text();
+                console.log("body= " + body);
+
+                const result = JSON.parse(body
+                // , jsonDateReviver
+                );
+
+                if (result.errors) {
+                    const error = result.errors[0];
+                    if (error.extensions.code == 'BAD_USER_INPUT') {
+                        const details = error.extensions.exception.errors.join('\n ');
+                        alert(`${error.message}:\n ${details}`);
+                    } else {
+                        alert(`${error.extensions.code}: ${error.message}`);
+                    }
+                }
+                return result.data;
+
+            } catch (e) {
+                alert(`Error in sending data to server: ${e.message}`);
+            }
+        }
+
+        // function jsonDateReviver(key, value) {
+        //     if (dateRegex.test(value)) return new Date(value);
+        //     return value;
+        // }
+    </script>
