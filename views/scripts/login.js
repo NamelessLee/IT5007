@@ -12,10 +12,10 @@ async function handleLoginSubmit(){
     console.log("userInDb="+JSON.stringify(userInDb));
     var pwd = userInDb.password;
     if(pwd == user.password){//successful on login
-        sessionStorage.setItem('username',user.username);        
-        alert("successful on login");
-        window.location.href='/';
-        document.getElementById("currentUser").innerText = userInDb.name;
+        sessionStorage.setItem('username',userInDb.name);  //当前登录用户存进session      
+        alert("successful on login");//提示成功
+        window.location.href='/'; //跳转回主页
+        document.getElementById("currentUser").innerText = userInDb.name;//主页currentUser显示登入用户的名字
     }
     else{
         alert("Failed. Wrong username or password");
