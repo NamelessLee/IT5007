@@ -13,7 +13,7 @@
         <div class="container-fluid" style="background-color: aliceblue;">
             <h1 style="text-align: center;">Close Contact Tracing</h1>
         </div>
-        <h2>Your status: <span class="badge bg-success" id="userStatus">Green</span></h2>
+        <h2>Your status: <span class="badge" style="background-color: rgb(73, 196, 73);" id="userStatus">Green</span></h2>
         
         <div style="background-color: aliceblue;">
             <h4 style="text-align: center;">Positive Table</h4>
@@ -40,6 +40,81 @@
                 </tbody>
             </table> 
         </div>
+        <script>
+            window.addEventListener('load', loadHandler);
+
+            function formatDate(date) {
+                var myyear = date.getFullYear();
+                var mymonth = date.getMonth() + 1;
+                var myweekday = date.getDate();
+                if (mymonth < 10) {
+                    mymonth = "0" + mymonth;
+                }
+                if (myweekday < 10) {
+                    myweekday = "0" + myweekday;
+                }
+                return (myyear + "" + mymonth + myweekday);
+            }  
+            
+            function renderTable(objectTable){
+                var positiveTable = [];//turn object array into array, but why?
+                for(let i=0; i < objectTable.length; i++ ){
+                    positiveTable.push(objectTable[i]);
+                }
+                var str = '';
+                
+                positiveTable.forEach(function(item){
+                    str += '<tr>' ;
+                    str += '<td>' + item.Date.slice(0,4)+'.'+item.Date.slice(4,6)+'.'+item.Date.slice(6,8) + '</td>' + '<td>' + item.trace + '</td>' ;
+                });
+                
+                document.getElementById("positiveTable").innerHTML = str;
+            }
+            
+
+            async function loadHandler(event){
+                var status = sessionStorage.getItem('status');
+                document.getElementById('userStatus').innerText = status;
+                if(status=="Yellow"){
+                    document.getElementById('userStatus').style.backgroundColor='yellow';
+                } else if(status=="Red"){
+                    document.getElementById('userStatus').style.backgroundColor='red';
+                }
+                var positiveTable = [];
+                var test = [];
+                test.push("haha");
+                for(let i=0; i<14; i++){
+                    var currDate = new Date();
+                    var date = currDate-1000*60*60*24*i;
+                    date = new Date(date);
+                    date = formatDate(date);
+                    const query = `query {
+                        Positive(date:
+                            "${date}"
+                        ){
+                            username
+                            name
+                            Date
+                            trace
+                        }
+                    }`;
+                    const data = await graphQLFetch(query, { date });
+                    if(data.Positive.length!=0){
+                        if(data.Positive.length > 1){//more than one diagnosed in one day
+                            for(let j = 0; j < data.Positive.length; j++){
+                                positiveTable.push(data.Positive[j]); //careful! dont make it string here
+                            }
+                        } else {
+                            positiveTable.push(data.Positive);
+                        }
+                        
+                    }
+                }
+                renderTable(positiveTable);        
+            }
+            
+            
+        </script>
     </body>
 
 </html>

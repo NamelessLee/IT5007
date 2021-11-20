@@ -1,3 +1,9 @@
+type Positive {
+  username: String,
+  name: String,
+  Date: String,
+  trace: [String]
+}
 type User {
   _id: ID!
   id: Int!
@@ -23,6 +29,7 @@ type Health {
 }
 
 type Query {
+  Positive(date: String): [Positive]
   User(user: UserInput!): [User]
   about: String
   Test(id: Int):String
