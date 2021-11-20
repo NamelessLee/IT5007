@@ -22,9 +22,20 @@ type Health {
   symptoms: [String]
 }
 
+input HealthInput {
+  username: String
+  temperature: String
+  covid: Int
+  symptoms: [String]
+}
+
 type Query {
   User(user: UserInput!): [User]
   about: String
   Test(id: Int):String
-  Health(username: String!): [Health]
+  Health(username: String!): Health
+}
+
+type Mutation {
+  HealthAdd(health: HealthInput!): Health
 }

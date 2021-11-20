@@ -21,8 +21,11 @@ const resolvers = {
     about: () => aboutMessage,
     User,
     Test,
-    Health
+    Health,
   },
+  Mutation: {
+    HealthAdd,
+  }
 };
 
 function Test(_, {id}) {
@@ -40,10 +43,18 @@ async function User(_, {user}) {
 
 async function Health(_, {username}) {
   const health = await db.collection('health').find({username: username}).toArray();
-  console.log("health = " + JSON.stringify(health));
-  return health;
+  return health[health.length - 1];
 }
 
+async function HealthAdd(_, {health}) {
+  health.date = (new Date()).toString();
+  const size = health.symptoms.size();
+  if (health.covid == 1) health.status = 'Red';
+  else if (size > 0 || parseFloat(health.temperature) > 37.5) health.status = 'Yellow';
+  else health.status = 'Green';
+  await db.collection('health').insert(health);
+  return health;
+}
 
 async function connectToDb() {
   const client = new MongoClient(url, { useNewUrlParser: true });
