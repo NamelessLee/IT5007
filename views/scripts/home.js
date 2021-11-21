@@ -1,13 +1,21 @@
 function getHealth() {
     if (sessionStorage.getItem("status") != null) {
-        document.getElementById("status").innerText = sessionStorage.getItem("status");
-        document.getElementById("temperature").innerText = sessionStorage.getItem("temperature");
+        let status = document.getElementById('status');
+        let temperature = document.getElementById('temperature');
+        status.innerText = sessionStorage.getItem("status");
+        temperature.innerText = sessionStorage.getItem("temperature");
+        changeColor(status);
     }
     else {
         const username = sessionStorage.getItem('username');
         console.log(username);
         getHealthFromDB(username);
     }
+}
+function changeColor(status) {
+    if (status.innerText == 'Yellow') status.style.backgroundColor = 'yellow';
+    else if (status.innerText == 'Red') status.style.backgroundColor = 'red';
+    else status.style.backgroundColor = 'green';
 }
 async function getHealthFromDB(username) {
     const query = `query {
@@ -19,10 +27,12 @@ async function getHealthFromDB(username) {
     }`;
     const data = await graphQLFetch(query, {username});
     const health = data.Health;
-    await sessionStorage.setItem("status", health.status);
-    await sessionStorage.setItem("temperature", health.temperature);
-    document.getElementById("status").innerText = health.status;
+    sessionStorage.setItem("status", health.status);
+    sessionStorage.setItem("temperature", health.temperature);
+    let status = document.getElementById('status');
+    status.innerText = health.status;
     document.getElementById("temperature").innerText = health.temperature;
+    changeColor(status);
 }
 
 window.addEventListener('load', (event => { getHealth(); }))
