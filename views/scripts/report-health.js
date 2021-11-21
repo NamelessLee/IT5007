@@ -1,7 +1,7 @@
-document.getElementById("healthSubmit").addEventListener("click", handleHealthSubmit);
+// document.getElementById("healthSubmit").addEventListener("click", handleHealthSubmit);
 async function handleHealthSubmit() {
     // save if positive with COVID
-    const covid = 0;
+    let covid = 0;
     if (document.getElementById('covid').checked) covid = 1;
     let array = ['fever', 'cough', 'sneeze', 'headache', 'dizzy', 'breath', 'chest'];
     let symptoms = [];
@@ -26,6 +26,7 @@ async function handleHealthSubmit() {
     const data = await graphQLFetch(query, { health });
     sessionStorage.setItem("status", data.HealthAdd.status);
     sessionStorage.setItem("temperature", data.HealthAdd.temperature);
+    window.location.reload();
 }
 
 ///////////////////////////////////////////////////////////////

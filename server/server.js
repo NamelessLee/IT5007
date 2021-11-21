@@ -56,7 +56,8 @@ async function Health(_, {username}) {
 }
 
 async function HealthAdd(_, {health}) {
-  health.date = (new Date()).toString();
+  const date = (new Date()).toISOString().split('T')[0].split('-');
+  health.date = date[0] + date[1] + date[2];
   const size = health.symptoms.length;
   if (health.covid == 1) health.status = 'Red';
   else if (size > 0 || parseFloat(health.temperature) > 37.5) health.status = 'Yellow';

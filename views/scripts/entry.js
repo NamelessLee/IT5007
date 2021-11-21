@@ -4,22 +4,30 @@ function quickExit() {
     const dateExit = document.querySelector("#date-exit");
     dateExit.value = dateNow.toISOString().split('T')[0];
     const timeExit = document.querySelector('#time-exit');
-    timeExit.value = dateNow.toISOString().substr(11, 8);
+    timeExit.value = dateNow.toISOString().substr(11, 6) + "00";
 }
+
 function quickEntry() {
     var dateNow = new Date();
     const dateEntry = document.querySelector("#date-entry");
     dateEntry.value = dateNow.toISOString().split('T')[0];
     const timeEntry = document.querySelector('#time-entry');
-    timeEntry.value = dateNow.toISOString().substr(11, 8);
+    timeEntry.value = dateNow.toISOString().substr(11, 6) + "00";
 }
+
+function handleTime(date, time) {
+    const date1 = date.split('-');
+    const time1 = time.split(':');
+    return date1[0] + date1[1] + date1[2] + time1[0] + time1[1];
+}
+
 async function entrySubmit() {
     const dateEntry = document.querySelector("#date-entry");
     const timeEntry = document.querySelector('#time-entry');
     const fromWhere = document.querySelector('#fromWhere');
     const entry = {
         username: `${sessionStorage.getItem('username')}`,
-        Datetime: dateEntry.value + " " + timeEntry.value,
+        Datetime: handleTime(dateEntry.value, timeEntry.value),
         type: 1,
         fromwhere: fromWhere.value,
         residence: document.getElementById('residence').innerText,
@@ -37,14 +45,16 @@ async function entrySubmit() {
     entryTable.innerHTML += "<tr>" + "<td>" + "Entry" + "</td>" + "<td>" + data.EntryAdd.fromwhere + "</td>" + "<td>"
                 + data.EntryAdd.Datetime + "</td>";
 }
+
 async function exitSubmit() {
     const dateExit = document.querySelector("#date-exit");
     const timeExit = document.querySelector('#time-exit');
     const entry = {
         username: `${sessionStorage.getItem('username')}`,
-        Datetime: dateExit.value + " " + timeExit.value,
+        Datetime: handleTime(dateExit.value, timeExit.value),
         type: 0,
     };
+    // console.log(entry.Datetime);
     const query = `mutation EntryAdd($entry: EntryInput!){
         EntryAdd(entry: $entry)
         {
@@ -57,6 +67,7 @@ async function exitSubmit() {
     entryTable.innerHTML += "<tr>" + "<td>" + "Exit" + "</td>" + "<td>" + "" + "</td>" + "<td>"
                 + data.EntryAdd.Datetime + "</td>";
 }
+
 // display data from database
 async function displayEntry() {
     const username = sessionStorage.getItem('username');
@@ -87,7 +98,9 @@ async function displayEntry() {
         }
     }
 }
+
 window.addEventListener('load', (event => { displayEntry(); }))
+
 ///////////////////////////////////////////////////////////////
 async function graphQLFetch(query, variables = {}) {
     console.log("graphQlFetch!!!!");
