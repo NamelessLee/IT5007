@@ -1,3 +1,9 @@
+type Building { 
+  name: String,
+  Date: String,
+  username: String
+}
+
 type Positive {
   username: String,
   name: String,
@@ -54,6 +60,7 @@ input EntryInput {
 }
 
 type Query {
+  Building(date: String): [Building]
   Positive(date: String): [Positive]
   User(user: UserInput!): [User]
   about: String

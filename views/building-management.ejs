@@ -64,10 +64,10 @@
                     <tr>
                         <th scope="col">Rank</th>
                         <th scope="col">Building</th>
-                        <th scope="col">Number of consecutive days of no positive</th>
+                        <th scope="col">Number of positive in last 7 days</th>
                     </tr>
                 </thead>
-                <tbody id="saveBuildingsTable">
+                <tbody id="safeBuildingsTable">
                     <tr>
                         <td>1</td>
                         <td>COM1</td>
@@ -133,6 +133,100 @@
             function closeBuildingDetail(){
                 var myDialog = document.getElementById("riskyBuildingDetail");
                 myDialog.close();
+            }
+
+            var NUSbuildings = ['AS1','AS2','AS3','AS4','AS5','AS6','AS7','AS8','Beacon','BIZ1','BIZ2','CAPT','CELS','COM1','COM2','CQT/SR0315',
+                                'DUKE05','E-Hybrid_A','E-Hybrid_B','E-Hybrid_C','E-Hybrid_D','E-Hybrid_E','E1','E2','E2A','E3','E3A','E4','E4A','E5','EA','EA-02-21','EH','ENG','ERC','ETS','EW1','EW2','Exam',
+                                'Frontier','Horizon','I3','I3-AUD','Influence','Innovation_I','Integrity','KEVII-MR2','KRH-READRM','LAW_CR2','LAW_CR2-1','LAW_CR3','LAW_CR4','LAW_CR5','LAW_ESR','LAW_LT','LAW_SR3',
+                                'LAW_SR4','LAW_SR5','LKY_SR2','LKY_SR3','LKY_TB10SR','LT1','LT2','LT3','LT4','LT6','LT7','LT7A','LT8','LT9','LT10','LT11','LT12','LT13','LT14','LT15','LT16','LT17','LT18',
+                                'LT19','LT20','LT21','LT26','LT27','LT28','LT29','LT31','LT32','LT33','LT34','LT37','LT37-03-07A','MD1','MD2','MD3','MD4','MD5','MD6','MD7','MD8','MD9','MD10','Momentum','NAK-AUD',
+                                'PGPH','Pinnacle','RC4','RH','RMI','RVR','S1A','S2','S4','S5','S6','S7','S8','S11','S12','S13','S14','S16','S17','SDE','SDE1','SDE2','SDE4','SFAH','SH','SPSWETLAB',
+                                'TC','TH','TP','USP','UT','UTSRC','WT','Y-ArtsStud','Y','YSTCM']
+            
+            function arrayToObjectArray(array) {
+                var NUSbuildings = [];
+                for(let i=0; i<array.length; i++){
+                    let b = array[i];
+                    NUSbuildings[b]=0;
+                }
+                return NUSbuildings;
+            }
+
+            function objvalueSort(myobj) {
+                let result = Object.values(myobj).sort((a,b)=>{
+                    return b-a;
+                });
+                var new_obj = [];
+                for(let i = 0; i < result.length; i++){
+                    Object.keys(myobj).map((item, index) => {
+                        if(myobj[item] === result[i]){
+                            new_obj[item] = result[i];
+                        }
+                    });
+                }
+                return new_obj;
+            }
+
+            function formatDate(date) {
+                var myyear = date.getFullYear();
+                var mymonth = date.getMonth() + 1;
+                var myweekday = date.getDate();
+                if (mymonth < 10) {
+                    mymonth = "0" + mymonth;
+                }
+                if (myweekday < 10) {
+                    myweekday = "0" + myweekday;
+                }
+                return (myyear + "" + mymonth + myweekday);
+            }  
+
+            function renderTable(Table){
+                var str = '';
+                for(let i=0; i<5; i++){
+                    no = i+1;
+                    str += '<tr>' ;
+                    str += '<td>' + no + '</td>' + '<td>' + Object.keys(Table)[i] + '</td>' + '<td>' + Table[Object.keys(Table)[i]] + '</td>' ;
+                }
+                document.getElementById("riskyBuildingsTable").innerHTML = str;
+
+                str = '';
+                var length = Object.keys(Table).length;
+                for(let i=length-1, no=1; i>length-6; i--, no++){
+                    str += '<tr>' ;
+                    str += '<td>' + no + '</td>' + '<td>' + Object.keys(Table)[i] + '</td>' + '<td>' + Table[Object.keys(Table)[i]] + '</td>' ;
+                }
+                document.getElementById("safeBuildingsTable").innerHTML = str;
+            }
+
+            window.addEventListener('load', loadHandler);
+
+            async function loadHandler(){
+                var buildingTable = arrayToObjectArray(NUSbuildings);
+                
+
+                for(let i=0; i<7; i++){
+                    var currDate = new Date();
+                    var date = currDate-1000*60*60*24*i;
+                    date = new Date(date);
+                    date = formatDate(date);
+                    const query = `query {
+                        Building(date:
+                            "${date}"
+                        ){
+                            username
+                            name
+                            Date
+                        }
+                    }`;
+                    const data = await graphQLFetch(query, { date });
+                    for(j=0; j<data.Building.length; j++){
+                        buildingTable[data.Building[j].name]++;
+                    }
+                }
+                buildingTable = objvalueSort(buildingTable);
+                renderTable(buildingTable);
+                
+
             }
         </script>
     </body>
