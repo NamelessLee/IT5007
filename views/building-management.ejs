@@ -8,6 +8,7 @@
                 background-color: chocolate;
             }
         </style>
+        <script src="./scripts/building-management.js"></script>
     </head>
     <body>
         <div class="container-fluid" style="background-color: aliceblue;">
@@ -17,10 +18,10 @@
             <div>
                 <div class="row">
                     <div class="col-2">
-                      <input type="text" class="form-control" placeholder="Building Name" aria-label="First name">   
+                      <input type="text" id="bName" class="form-control" placeholder="Building Name" aria-label="First name">   
                     </div>
                     <div class="col-2">
-                        <button type="submit" class="btn btn-primary">Search</button>
+                        <button type="submit" class="btn btn-primary" onClick="handleClickSearch()" >Search</button>
                     </div>
                     
                   </div>
@@ -200,8 +201,10 @@
 
             window.addEventListener('load', loadHandler);
 
+            var buildingTable = [];
+
             async function loadHandler(){
-                var buildingTable = arrayToObjectArray(NUSbuildings);
+                buildingTable = arrayToObjectArray(NUSbuildings);
                 
 
                 for(let i=0; i<7; i++){
@@ -225,8 +228,6 @@
                 }
                 buildingTable = objvalueSort(buildingTable);
                 renderTable(buildingTable);
-                
-
             }
         </script>
     </body>
