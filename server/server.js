@@ -27,6 +27,7 @@ const resolvers = {
   },
   Mutation: {
     HealthAdd,
+    EntryAdd,
   }
 };
 
@@ -66,6 +67,11 @@ async function HealthAdd(_, {health}) {
 
 async function Entry(_, {username}) {
   const entry = await db.collection('entry').find({username: username}).toArray();
+  return entry;
+}
+
+async function EntryAdd(_, {entry}) {
+  await db.collection('entry').insert(entry);
   return entry;
 }
 

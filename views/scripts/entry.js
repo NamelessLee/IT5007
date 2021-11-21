@@ -13,20 +13,49 @@ function quickEntry() {
     const timeEntry = document.querySelector('#time-entry');
     timeEntry.value = dateNow.toISOString().substr(11, 8);
 }
-function entrySubmit() {
+async function entrySubmit() {
     const dateEntry = document.querySelector("#date-entry");
     const timeEntry = document.querySelector('#time-entry');
     const fromWhere = document.querySelector('#fromWhere');
+    const entry = {
+        username: `${sessionStorage.getItem('username')}`,
+        Datetime: dateEntry.value + " " + timeEntry.value,
+        type: 1,
+        fromwhere: fromWhere.value,
+        residence: document.getElementById('residence').innerText,
+        placesPassed: document.getElementById('route').innerText,
+    };
+    const query = `mutation EntryAdd($entry: EntryInput!){
+        EntryAdd(entry: $entry)
+        {
+            Datetime
+            fromwhere
+        }
+    }`;
+    const data = await graphQLFetch(query, { entry });
     var entryTable = document.querySelector("#entryTable");
-    entryTable.innerHTML += "<tr>" + "<td>" + "Entry" + "</td>" + "<td>" + fromWhere.value + "</td>" + "<td>"
-        + dateEntry.value + " " + timeEntry.value + "</td>";
+    entryTable.innerHTML += "<tr>" + "<td>" + "Entry" + "</td>" + "<td>" + data.EntryAdd.fromwhere + "</td>" + "<td>"
+                + data.EntryAdd.Datetime + "</td>";
 }
-function exitSubmit() {
+async function exitSubmit() {
     const dateExit = document.querySelector("#date-exit");
     const timeExit = document.querySelector('#time-exit');
+    const entry = {
+        username: `${sessionStorage.getItem('username')}`,
+        Datetime: dateExit.value + " " + timeExit.value,
+        type: 0,
+    };
+    const query = `mutation EntryAdd($entry: EntryInput!){
+        EntryAdd(entry: $entry)
+        {
+            Datetime
+        }
+    }`;
+    const data = await graphQLFetch(query, { entry });
+    console.log(data);
     var entryTable = document.querySelector("#entryTable");
     entryTable.innerHTML += "<tr>" + "<td>" + "Exit" + "</td>" + "<td>" + "" + "</td>" + "<td>"
-        + dateExit.value + " " + timeExit.value + "</td>";
+                + data.EntryAdd.Datetime + "</td>";
 }
 // display data from database
 async function displayEntry() {
@@ -45,13 +74,13 @@ async function displayEntry() {
     console.log(data);
     var entryTable = document.querySelector("#entryTable");
     for (let item of data.Entry) {
-        // entry
+        // exit
         if (item.type == 0) {
             entryTable.innerHTML += "<tr>" + "<td>" + "Exit" + "</td>" + "<td>" + "" + "</td>" + "<td>"
                 + item.Datetime + "</td>";
             
         }
-        // exit
+        // entry
         else {
             entryTable.innerHTML += "<tr>" + "<td>" + "Entry" + "</td>" + "<td>" + item.fromwhere + "</td>" + "<td>"
                 + item.Datetime + "</td>";

@@ -1,4 +1,8 @@
 db.users.remove({});
+db.health.remove({});
+db.entry.remove({});
+db.positive.remove({});
+db.buildings.remove({});
 
 const initialUsers = [
   {

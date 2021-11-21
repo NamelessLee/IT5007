@@ -44,6 +44,15 @@ type Entry {
   placesPassed: String
 }
 
+input EntryInput {
+  username: String
+  Datetime: String
+  type: Int
+  fromwhere: Int
+  residence: String
+  placesPassed: String
+}
+
 type Query {
   Positive(date: String): [Positive]
   User(user: UserInput!): [User]
@@ -55,4 +64,5 @@ type Query {
 
 type Mutation {
   HealthAdd(health: HealthInput!): Health
+  EntryAdd(entry: EntryInput!): Entry
 }
