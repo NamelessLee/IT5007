@@ -1,9 +1,10 @@
 <% layout('layouts/boilerplate') %>
-<style>
-    #sidebarEntry {
-        background-color: chocolate;
-    }
-</style>
+    <style>
+        #sidebarEntry {
+            background-color: chocolate;
+        }
+    </style>
+    <script src="./scripts/entry.js"></script>
     <div class="container-fluid" style="background-color: aliceblue;">
         <h1 style="text-align: center;">Campus Entry & Exit</h1>
     </div>
@@ -112,42 +113,3 @@
             </tbody>
         </table>
     </div>
-    <script type="text/javascript">
-        function quickExit() {
-            var dateNow = new Date();
-            const dateExit = document.querySelector("#date-exit");
-            dateExit.value = dateNow.toISOString().split('T')[0];
-            const timeExit = document.querySelector('#time-exit');
-            timeExit.value = dateNow.toISOString().substr(11, 8);
-        }
-        function quickEntry() {
-            var dateNow = new Date();
-            const dateEntry = document.querySelector("#date-entry");
-            dateEntry.value = dateNow.toISOString().split('T')[0];
-            const timeEntry = document.querySelector('#time-entry');
-            timeEntry.value = dateNow.toISOString().substr(11, 8);
-        }
-        function entrySubmit() {
-            const dateEntry = document.querySelector("#date-entry");
-            const timeEntry = document.querySelector('#time-entry');
-            const fromWhere = document.querySelector('#fromWhere');
-            var entryTable = document.querySelector("#entryTable");
-            entryTable.innerHTML += "<tr>" + "<td>" + "Entry" + "</td>" + "<td>" + fromWhere.value + "</td>" + "<td>"
-                + dateEntry.value + " " + timeEntry.value + "</td>";
-        }
-        function exitSubmit() {
-            const dateExit = document.querySelector("#date-exit");
-            const timeExit = document.querySelector('#time-exit');
-            var entryTable = document.querySelector("#entryTable");
-            entryTable.innerHTML += "<tr>" + "<td>" + "Exit" + "</td>" + "<td>" + "" + "</td>" + "<td>"
-                + dateExit.value + " " + timeExit.value + "</td>";
-        }
-        // function enterCampus() {
-        //     var myDialog = document.getElementById("enterCampusDialog");
-        //     myDialog.show();
-        // }
-        // function closeSubmit() {
-        //     var myDialog = document.getElementById("enterCampusDialog");
-        //     myDialog.close();
-        // }
-    </script>

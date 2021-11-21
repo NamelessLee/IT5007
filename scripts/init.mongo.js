@@ -77,4 +77,5 @@ const count = db.users.count();
 print('Inserted', count, 'initialUsers');
 
 db.users.createIndex({ id: 1 }, { unique: true });
-db.health.createIndex({ username : 1}, { unique : true});
+db.health.createIndex({ username : 1}, { unique : false});
+db.entry.createIndex({ username : 1}, { unique : false});

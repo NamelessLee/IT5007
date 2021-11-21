@@ -35,12 +35,22 @@ input HealthInput {
   symptoms: [String]
 }
 
+type Entry {
+  username: String
+  Datetime: String
+  type: Int
+  fromwhere: Int
+  residence: String
+  placesPassed: String
+}
+
 type Query {
   Positive(date: String): [Positive]
   User(user: UserInput!): [User]
   about: String
   Test(id: Int):String
   Health(username: String!): Health
+  Entry(username: String!): [Entry]
 }
 
 type Mutation {

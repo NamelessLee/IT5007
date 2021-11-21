@@ -23,6 +23,7 @@ const resolvers = {
     User,
     Test,
     Health,
+    Entry,
   },
   Mutation: {
     HealthAdd,
@@ -61,6 +62,11 @@ async function HealthAdd(_, {health}) {
   else health.status = 'Green';
   await db.collection('health').insert(health);
   return health;
+}
+
+async function Entry(_, {username}) {
+  const entry = await db.collection('entry').find({username: username}).toArray();
+  return entry;
 }
 
 async function connectToDb() {
