@@ -33,13 +33,11 @@ const resolvers = {
 
 async function Building(_, {date}) {
   const buildings = await db.collection('buildings').find({Date: date}).toArray();
-  //console.log(date + " : positives="+ JSON.stringify(positives));
   return buildings;
 }
 
 async function Positive(_, {date}) {
   const positives = await db.collection('positive').find({Date: date}).toArray();
-  //console.log(date + " : positives="+ JSON.stringify(positives));
   return positives;
 }
 
