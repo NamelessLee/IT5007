@@ -14,6 +14,7 @@ async function handleLoginSubmit(){
     if(pwd == user.password){//successful on login
         sessionStorage.setItem('name',userInDb.name);  //当前登录用户存进session    
         sessionStorage.setItem('username',userInDb.username);
+        sessionStorage.setItem('type',userInDb.type);
         alert("successful on login");//提示成功
         window.location.href='/'; //跳转回主页
         document.getElementById("currentUser").innerText = userInDb.name;//主页currentUser显示登入用户的名字

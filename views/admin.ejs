@@ -26,7 +26,15 @@
             </style>
     </head>
     <body>
+      <div id="noneAdminPage" style="display: none">
+        <br></br>
+        <h1 style="text-align: center">Sorry. Only Admin can access this page.</h1>
+        <p style="text-align: center">Email</p>
+        <p style="text-align: center">e0809389@u.nus.edu Or lang.qianqian@u.nus.edu</p>
+        <p style="text-align: center">for authority</p>
         
+      </div>
+      <div id="adminPage" style="display: block;"> 
         <div class="container-fluid" style="background-color: aliceblue;">
             <h1 style="text-align: center;">Administration Sector </h1>
         </div>
@@ -166,5 +174,17 @@
                 </tbody>
             </table> 
         </div>
+       </div> 
+        <script>
+          window.addEventListener('load', loadHandler);
+
+          function loadHandler(){
+            var type = sessionStorage.getItem('type');
+            if(type.indexOf('admin') == -1){//not admin
+              document.getElementById("adminPage").style.display = "none";
+              document.getElementById("noneAdminPage").style.display = "block";
+            }
+          }
+        </script>
     </body>
 </html>
