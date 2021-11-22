@@ -11,6 +11,8 @@ const initialUsers = [
     password: '12345678',
     name: 'Xinyue',
     type: ['student','admin'],
+    dorm: '1-101',
+    courses: ['IT5007','IT5005','BMD5301','BMF5342','FT5001','FT5002']
   },
   {
       id: 2,
@@ -18,13 +20,17 @@ const initialUsers = [
       password: '12345678',
       name: 'Qianqian',
       type: ['student','admin'],
+      dorm: '1-101',
+      courses: ['IT5007','IT5005','IT5001','FT5001','FT5002']
   },
   {
       id: 3,
       username: 'PKV',
       password: '12345678',
       name:'Dr.Prasanna',
-      type:['teacher','tutor'],
+      type:['staff','tutor'],
+      dorm: '2-101',
+      courses: ['IT5007']
   },
   {
     id: 4,
@@ -32,6 +38,8 @@ const initialUsers = [
     password: '1',
     name:'Corona',
     type:['student','tutor'],
+    dorm: '3-101',
+    courses: ['IT5002']
   },
   {
     id: 5,
@@ -39,6 +47,8 @@ const initialUsers = [
     password: '2',
     name:'Virus',
     type:['student'],
+    dorm: '3-102',
+    courses: ['IT5002']
 }
 ];
 

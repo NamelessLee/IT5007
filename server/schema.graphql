@@ -17,6 +17,19 @@ type User {
   password: String
   name: String
   type: [String]
+  dorm: String
+  courses: [String]
+}
+
+input NewUserInput {
+  id: Int
+  username: String
+  password: String
+  name: String
+  type: [String]
+  dorm: String
+  courses: [String]
+
 }
 
 input UserInput {
@@ -70,6 +83,7 @@ type Query {
 }
 
 type Mutation {
+  UserAdd(user: NewUserInput): [User]
   HealthAdd(health: HealthInput!): Health
   EntryAdd(entry: EntryInput!): Entry
 }

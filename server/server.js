@@ -27,10 +27,29 @@ const resolvers = {
     Entry,
   },
   Mutation: {
+    UserAdd,
     HealthAdd,
     EntryAdd,
   }
 };
+async function UserAdd(_, {user}) {
+  const users = await db.collection('users').find().toArray();
+  var id = users[users.length-1].id;
+  for(let i = 0; i < users.length; i++){
+    if(user.username == users[i].username){
+      console.log("duplicate!!!");
+      return -1;
+    }
+  }
+  id++;
+  console.log("id= "+id);
+  user.id = id;
+  console.log(user);
+  await db.collection('users').insert(user);
+  const newUser = await db.collection('users').find({username: user.username}).toArray();
+  console.log(newUser);
+  return newUser;
+}
 
 async function Building(_, {date}) {
   const buildings = await db.collection('buildings').find({Date: date}).toArray();
