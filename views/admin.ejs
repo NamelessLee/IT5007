@@ -144,33 +144,11 @@
                         <th scope="col">UserClass</th>
                         <th scope="col">UserTrace</th>
                         <th scope="col">UserPassword</th>
+                        <th scope="col">Delete</th>
                     </tr>
                 </thead>
                 <tbody id="UserTable">
-                    <tr onclick="clickRow(this)">
-                        <td>A0242720R</td>
-                        <td>Li Xinyue</td>
-                        <td>Green</td>
-                        <td><button style="background-color:orange; border-radius: 10px;">view modules</button></td>
-                        <td><button style="background-color:orange; border-radius: 10px;">view trace</button></td>
-                        <td><button style="background-color:orange; border-radius: 10px;">view password</button></td>
-                    </tr>
-                    <tr onclick="clickRow(this)">
-                        <td>A0242694X</td>
-                        <td>Lang Qianqian</td>
-                        <td>Green</td>
-                        <td><button style="background-color:orange; border-radius: 10px;">view modules</button></td>
-                        <td><button style="background-color:orange; border-radius: 10px;">view trace</button></td>
-                        <td><button style="background-color:orange; border-radius: 10px;">view password</button></td>
-                    </tr>
-                    <tr onclick="clickRow(this)">
-                        <td>A0000000A</td>
-                        <td>Somebody</td>
-                        <td><button style="background-color:orangered; border-radius: 10px;">Red</button></td>
-                        <td><button style="background-color:orange; border-radius: 10px;">view modules</button></td>
-                        <td><button style="background-color:orange; border-radius: 10px;">view trace</button></td>
-                        <td><button style="background-color:orange; border-radius: 10px;">view password</button></td>
-                    </tr>
+                    
                 </tbody>
             </table> 
         </div>
@@ -178,13 +156,120 @@
         <script>
           window.addEventListener('load', loadHandler);
 
-          function loadHandler(){
+          async function loadHandler(){
             var type = sessionStorage.getItem('type');
             if(type.indexOf('admin') == -1){//not admin
               document.getElementById("adminPage").style.display = "none";
               document.getElementById("noneAdminPage").style.display = "block";
             }
+            const query = `query {
+              AllUsers{
+                username
+                password
+                name
+                type
+                dorm
+                courses
+              }
+            }`;//no ()
+            const data = await graphQLFetch(query);
+            //console.log("data="+JSON.stringify(data));
+            var str = '';
+            console.log(data);
+            console.log(data.AllUsers.length);
+            for(let i=0; i<data.AllUsers.length; i++){
+              let username = data.AllUsers[i].username;
+              const query = `query {
+                  Health(username: "${username}")
+                  {
+                      status
+                  }
+              }`;
+              var data1 = await graphQLFetch(query, {username});
+              var status = '404';
+              if(data1.Health != null){
+                status = data1.Health.status;
+              }
+    
+              str += '<td>' + data.AllUsers[i].username + '</td>' + '<td>' + data.AllUsers[i].name + '</td>' + '<td>' + status + '</td>' + '<td><button onClick="handleViewModules(\''+data.AllUsers[i].username+'\')" style="background-color:orange; border-radius: 10px;">view modules</button></td>'
+                        + '<td><button onClick="handleViewTrace(\''+data.AllUsers[i].username+'\')" style="background-color:orange; border-radius: 10px;">view trace</button></td>'
+                        + '<td><button onClick="handleViewPWD(\''+ data.AllUsers[i].password+'\')" style="background-color:orange; border-radius: 10px;">view password</button></td>'
+                        + '<td><button onClick="handleDelete(\''+data.AllUsers[i].username+'\')" style="background-color:orangered; border-radius: 10px;">Delete</button></td>';
+              str += '</tr>';
+              
+            }
+            document.getElementById("UserTable").innerHTML = str;
           }
+
+          async function handleDelete(username){
+            const query = `mutation {
+                UserDelete(username: "${username}")
+            }`;
+            const data = await graphQLFetch(query, { username });
+            if(data.UserDelete != 1){
+              alert("Failed to delete. Please retry.")
+            }
+            else {
+              alert("Successfully deleted user: " + username);
+              loadHandler();
+            }
+          }
+
+          async function handleViewModules(username){
+            const query = `query {
+              AllUsers{
+                username
+                name
+                courses
+              }
+            }`;//no ()
+            const data = await graphQLFetch(query);
+            console.log(data);
+            var AllUsers = data.AllUsers;
+            var modules = [];
+            var name = '';
+            for(let i = 0; i < AllUsers.length; i++){
+              if(AllUsers[i].username == username){
+                modules = AllUsers[i].courses;
+                name = AllUsers[i].name;
+              }
+            }
+            alert("Modules " + name + " takes are:" + "\n" + modules);
+          }
+
+          async function handleViewPWD(password){
+            alert('password:' + password);
+          }
+
+          async function handleViewTrace(username){
+            const query = `query {
+                Entry(username: "${username}")
+                {
+                    Datetime
+                    type
+                    fromwhere
+                    residence
+                    placesPassed
+                }
+            }`;
+            const data = await graphQLFetch(query, { username });
+            var traces = '';
+            if(data.Entry.length != 0){
+              traces += username + '\'s traces:' + '\n';
+              for(let i=0; i<data.Entry.length; i++){
+                if(data.Entry[i].type == 1){
+                  traces += data.Entry[i].Datetime + ': ' + data.Entry[i].residence + '. ' + data.Entry[i].placesPassed + '\n';
+                }
+              }
+              alert(traces);
+            }
+            else {
+              alert("No traces records found.")
+            }
+          }
+
+          
         </script>
+        
     </body>
 </html>

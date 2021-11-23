@@ -73,6 +73,7 @@ input EntryInput {
 }
 
 type Query {
+  AllUsers: [User]
   Building(date: String): [Building]
   Positive(date: String): [Positive]
   User(user: UserInput!): [User]
@@ -83,6 +84,7 @@ type Query {
 }
 
 type Mutation {
+  UserDelete(username: String): Int
   UserAdd(user: NewUserInput): [User]
   HealthAdd(health: HealthInput!): Health
   EntryAdd(entry: EntryInput!): Entry

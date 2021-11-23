@@ -18,6 +18,7 @@ let aboutMessage = "Safe Management";
 
 const resolvers = {
   Query: {
+    AllUsers,
     Building,
     Positive,
     about: () => aboutMessage,
@@ -27,11 +28,22 @@ const resolvers = {
     Entry,
   },
   Mutation: {
+    UserDelete,
     UserAdd,
     HealthAdd,
     EntryAdd,
   }
 };
+async function UserDelete(_, {username}) {
+  const result = await db.collection('users').deleteOne({username: username});
+  return result.result.n; 
+}
+
+async function AllUsers() {
+  const users = await db.collection('users').find().toArray();
+  return users;
+}
+
 async function UserAdd(_, {user}) {
   const users = await db.collection('users').find().toArray();
   var id = users[users.length-1].id;
