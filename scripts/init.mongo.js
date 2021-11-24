@@ -3,6 +3,8 @@ db.health.remove({});
 db.entry.remove({});
 db.positive.remove({});
 db.buildings.remove({});
+db.tutors.remove({});
+db.reviews.remove({});
 
 const initialUsers = [
   {
@@ -85,7 +87,7 @@ const initialTutors = [
   {
     username: 'PKV', gender:'M', courseType: ['CS', 'FT'], 
     courses: ['CS3443', 'IT5001', 'FT5309'], price: [40, 60], 
-    // format: day of week - time of day
+    // format: day of week - time of day (last for 1 hour)
     availability: ['1-10', '6-17', '7-19'], 
     level: 'D', degree: 'Doctor of Philosophy in Computer Science',
     completedLessons: 49, numReviews: 2, stars: 5, 
@@ -113,10 +115,14 @@ db.health.insertMany(initialHealth);
 db.entry.insertMany(initialEntry);
 db.positive.insertMany(initialPositive);
 db.buildings.insertMany(initialBuildings);
+db.tutors.insertMany(initialTutors);
+db.reviews.insertMany(initialReviews);
 
-const count = db.users.count();
-print('Inserted', count, 'initialUsers');
+// const count = db.users.count();
+// print('Inserted', count, 'initialUsers');
 
 db.users.createIndex({ id: 1 }, { unique: true });
 db.health.createIndex({ username: 1 }, { unique: false });
 db.entry.createIndex({ username: 1 }, { unique: false });
+db.tutors.createIndex({ username: 1 }, { unique: true });
+db.reviews.createIndex({ tutorName: 1 }, { unique: false });
