@@ -16,6 +16,16 @@
         .dropdown-toggle {
             width: 100%,
         }
+        .whiteBackground {
+            background-color: whitesmoke;
+        }
+        .marginAuto {
+            margin: auto;
+        }
+        #availableNum {
+            background-color: darkblue;
+            color:whitesmoke;
+        }
     </style>
 </head>
 
@@ -177,14 +187,7 @@
 
         <div class="container-fluid mt-3 pt-3">
             <div class="row">
-                <div class="col-7 offset-1">
-                    <div class="mt-3 mb-3 h2">
-                        <em class="p-1" style="background-color: darkblue;color:whitesmoke">325</em> tutors available
-                        online!
-                    </div>
-
-                    <!-- render all tutors display -->
-                    <div id = "wrapDisplayTutors"></div>
+                <div class="col-7 offset-1" id="wrapDisplayTutors">
 
                 </div>
 
@@ -229,6 +232,11 @@
                 element.classList.add("active");
             })();
         </script>
+        <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+      
+        <script src="https://unpkg.com/@babel/polyfill@7/dist/polyfill.min.js"></script>
+        <script src="https://unpkg.com/whatwg-fetch@3.0.0/dist/fetch.umd.js"></script>
         <script src="../scripts/search-tutor.js"></script>
 </body>
 

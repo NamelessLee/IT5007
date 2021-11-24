@@ -98,60 +98,59 @@ function _graphQLFetch() {
   return _graphQLFetch.apply(this, arguments);
 }
 
-function tutorDetail(props) {
+function TutorDetail(props) {
   var tutor = props.tutor;
+  var courseTypes = tutor.courseType.map(function (course) {
+    return /*#__PURE__*/React.createElement("button", {
+      className: "btn btn-info m-1"
+    }, course);
+  });
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
-    class: "container-fluid mt-3",
-    style: "background-color: whitesmoke;"
+    className: "container-fluid mt-3 whiteBackground"
   }, /*#__PURE__*/React.createElement("div", {
-    class: "row"
+    className: "row"
   }, /*#__PURE__*/React.createElement("div", {
-    class: "col-3 border-right",
-    style: "margin:auto"
+    className: "col-3 border-right marginAuto"
   }, /*#__PURE__*/React.createElement("img", {
-    class: "container-fluid",
+    className: "container-fluid",
     src: "./img/tutorPhoto.jpeg"
   })), /*#__PURE__*/React.createElement("div", {
-    class: "col-6 p-3 border-right"
+    className: "col-6 p-3 border-right"
   }, /*#__PURE__*/React.createElement("div", {
-    class: "h5"
+    className: "h5"
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", null, tutor.username))), /*#__PURE__*/React.createElement("div", {
-    class: "text-muted"
+    className: "text-muted"
   }, tutor.degree), /*#__PURE__*/React.createElement("div", {
-    class: "small"
+    className: "small"
   }, tutor.intro), /*#__PURE__*/React.createElement("div", {
-    class: "pt-1 mt-1"
-  }, /*#__PURE__*/React.createElement("div", null, "Offers: ", /*#__PURE__*/React.createElement("button", {
-    class: "btn btn-info m-1"
-  }, tutor.courseType[0])))), /*#__PURE__*/React.createElement("div", {
-    class: "col-3 p-3"
+    className: "pt-1 mt-1"
+  }, /*#__PURE__*/React.createElement("div", null, "Offers: ", courseTypes))), /*#__PURE__*/React.createElement("div", {
+    className: "col-3 p-3"
   }, /*#__PURE__*/React.createElement("h5", {
-    class: "strong"
+    className: "strong"
   }, "$", tutor.price[0], "-", tutor.price[1], "/hr"), /*#__PURE__*/React.createElement("div", {
-    class: "stars mt-3"
+    className: "stars mt-3"
   }, /*#__PURE__*/React.createElement("span", {
-    class: "fa fa-star checked"
+    className: "fa fa-star checked"
   }), /*#__PURE__*/React.createElement("span", null, tutor.stars)), /*#__PURE__*/React.createElement("div", {
-    class: "fst-italic"
+    className: "fst-italic"
   }, /*#__PURE__*/React.createElement("strong", null, tutor.numReviews), " reviews"), /*#__PURE__*/React.createElement("div", {
-    class: "fst-italic"
+    className: "fst-italic"
   }, /*#__PURE__*/React.createElement("strong", null, tutor.completedLessons), " completed lessons"), /*#__PURE__*/React.createElement("div", {
-    class: "mb-1 d-grid gap-2 mt-3"
+    className: "mb-1 d-grid gap-2 mt-3"
   }, /*#__PURE__*/React.createElement("a", {
     href: "/display-tutor",
-    class: "btn btn-success btn-lg btn-block"
+    className: "btn btn-success btn-lg btn-block"
   }, "See details"))))));
 }
 
-function displayTutors(props) {
+function DisplayTutors(props) {
   var tutorDetails = props.tutors.map(function (tutor) {
-    return /*#__PURE__*/React.createElement("tutorDetail", {
+    return /*#__PURE__*/React.createElement(TutorDetail, {
       tutor: tutor
     });
   });
-  return {
-    tutorDetails: tutorDetails
-  };
+  return /*#__PURE__*/React.createElement("div", null, tutorDetails);
 }
 
 var DisplayAllTutors = /*#__PURE__*/function (_React$Component) {
@@ -166,6 +165,7 @@ var DisplayAllTutors = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this);
     _this.state = {
+      numTutors: 0,
       tutors: []
     };
     return _this;
@@ -196,6 +196,9 @@ var DisplayAllTutors = /*#__PURE__*/function (_React$Component) {
                   this.setState({
                     tutors: data.Tutors
                   });
+                  this.setState({
+                    numTutors: data.Tutors.length
+                  });
                 }
 
               case 5:
@@ -215,7 +218,12 @@ var DisplayAllTutors = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("displayTutors", {
+      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+        className: "mt-3 mb-3 h2"
+      }, /*#__PURE__*/React.createElement("em", {
+        className: "p-1",
+        id: "availableNum"
+      }, this.state.numTutors), " tutors available online!"), /*#__PURE__*/React.createElement(DisplayTutors, {
         tutors: this.state.tutors
       }));
     }
