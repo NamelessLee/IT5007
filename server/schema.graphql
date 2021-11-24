@@ -1,3 +1,33 @@
+input TutorInput {
+  username: String,
+  gender: String,
+  courseType:[String],
+  courses:[String],
+  price:[String],
+  availability: [String],
+  level: String,
+  degree: String,
+  completedLessons: Int,
+  numReviews: Int,
+  stars: Float,
+  intro: String
+}
+
+type Tutor {
+  username: String,
+  gender: String,
+  courseType:[String],
+  courses:[String],
+  price:[String],
+  availability: [String],
+  level: String,
+  degree: String,
+  completedLessons: Int,
+  numReviews: Int,
+  stars: Float,
+  intro: String
+}
+
 type Building { 
   name: String,
   Date: String,
@@ -100,6 +130,7 @@ type Query {
 }
 
 type Mutation {
+  TutorAdd(tutor: TutorInput): [Tutor]
   UserDelete(username: String): Int
   UserAdd(user: NewUserInput): [User]
   HealthAdd(health: HealthInput!): Health
