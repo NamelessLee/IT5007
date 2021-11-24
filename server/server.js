@@ -28,12 +28,27 @@ const resolvers = {
     Entry,
   },
   Mutation: {
+    TutorAdd,
     UserDelete,
     UserAdd,
     HealthAdd,
     EntryAdd,
   }
 };
+
+async function TutorAdd(_, {tutor}) {
+  var tutors = await db.collection('tutors').find().toArray();
+  //console.log(JSON.stringify(tutors));
+  for(let i=0; i<tutors.length;i++){
+    if(tutors[i].username == tutor.username){
+      return [];//already exists
+    } 
+  }
+  await db.collection('tutors').insert(tutor);
+  var tutors = await db.collection('tutors').find({username:tutor.username}).toArray();
+  return tutors;
+}
+
 async function UserDelete(_, {username}) {
   const result = await db.collection('users').deleteOne({username: username});
   return result.result.n; 
