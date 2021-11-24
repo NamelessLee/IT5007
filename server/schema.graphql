@@ -72,6 +72,21 @@ input EntryInput {
   placesPassed: String
 }
 
+type Tutor {
+  username: String
+  gender: String
+  courseType: [String]
+  courses: [String]
+  price: [Int]
+  availability: [String]
+  level: String
+  degree: String
+  completedLessons: Int
+  numReviews: Int
+  stars: Float
+  intro: String
+}
+
 type Query {
   AllUsers: [User]
   Building(date: String): [Building]
@@ -81,6 +96,7 @@ type Query {
   Test(id: Int):String
   Health(username: String!): Health
   Entry(username: String!): [Entry]
+  Tutors:[Tutor]
 }
 
 type Mutation {

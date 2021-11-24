@@ -183,81 +183,8 @@
                         online!
                     </div>
 
-                    <!-- brief intro of tutor -->
-                    <div class="container-fluid mt-3" style="background-color: whitesmoke;">
-                        <div class="row">
-                            <div class="col-3 border-right" style="margin:auto">
-                                <img class="container-fluid" src="./img/tutorPhoto.jpeg">
-                            </div>
-                            <div class="col-6 p-3 border-right">
-                                <div class="h5">
-                                    <div>
-                                        <div>Tom Smith</div>
-                                    </div>
-                                </div>
-                                <div class="text-muted">Master of Computing (General Track)</div>
-                                <div class="small">
-                                    I love tutoring and I am also a big fan of computer science. The thought of combining these two together makes me so excited, and I am happy to help other students in CS.
-                                </div>
-                                <div class="pt-1 mt-1">
-                                    <div>Offers: <button class="btn btn-info m-1">CS</button><button
-                                            class="btn btn-info">FT</button></div>
-                                </div>
-                            </div>
-                            <div class="col-3 p-3">
-                                <h5 class="strong">$40-60/hr</h5>
-                                <div class="stars mt-3">
-                                    <span class="fa fa-star checked"></span>
-                                    <span>5</span>
-                                </div>
-                                <div class="fst-italic"><strong>210</strong> reviews</div>
-                                <div class="fst-italic"><strong>49</strong> completed lessons</div>
-                                <div class="mb-1 d-grid gap-2 mt-3">
-                                    <a href="/display-tutor" class="btn btn-success btn-lg btn-block">
-                                        See details
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- brief intro of tutor -->
-                    <div class="container-fluid mt-3" style="background-color: whitesmoke;">
-                        <div class="row">
-                            <div class="col-3 border-right" style="margin:auto">
-                                <img class="container-fluid" src="./img/tutorPhoto.jpeg">
-                            </div>
-                            <div class="col-6 p-3 border-right">
-                                <div class="h5">
-                                    <div>
-                                        <div>Tom Smith</div>
-                                    </div>
-                                </div>
-                                <div class="text-muted">Master of Computing (General Track)</div>
-                                <div class="small">
-                                    I love tutoring and I am also a big fan of computer science. The thought of combining these two together makes me so excited, and I am happy to help other students in CS.
-                                </div>
-                                <div class="pt-1 mt-1">
-                                    <div>Offers: <button class="btn btn-info m-1">CS</button><button
-                                            class="btn btn-info">FT</button></div>
-                                </div>
-                            </div>
-                            <div class="col-3 p-3">
-                                <h5 class="strong">$40-60/hr</h5>
-                                <div class="stars mt-3">
-                                    <span class="fa fa-star checked"></span>
-                                    <span>5</span>
-                                </div>
-                                <div class="fst-italic"><strong>210</strong> reviews</div>
-                                <div class="fst-italic"><strong>49</strong> completed lessons</div>
-                                <div class="mb-1 d-grid gap-2 mt-3">
-                                    <a href="/display-tutor" class="btn btn-success btn-lg btn-block">
-                                        See details
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- render all tutors display -->
+                    <div id = "wrapDisplayTutors"></div>
 
                 </div>
 
@@ -270,7 +197,9 @@
                                     Haven't found satisfactory tutors?
                                 </div>
                                 <div>
-                                    Your tutor in need might haven't signed up to be a tutor yet. By clicking the button, our service will generate system messages to NUS students complying with your requirements above, and thus will get more tutors posting!
+                                    Your tutor in need might haven't signed up to be a tutor yet. By clicking the
+                                    button, our service will generate system messages to NUS students complying with
+                                    your requirements above, and thus will get more tutors posting!
                                 </div>
                                 <div class="mb-3 d-grid gap-2 mt-3">
                                     <button type="button" class="btn btn-info btn-lg btn-block">
@@ -292,15 +221,15 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
             integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
             crossorigin="anonymous"></script>
-        <script src="../../bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- <script src="../../bootstrap/js/bootstrap.bundle.min.js"></script> -->
         <script>
             // activate nav link
             (() => {
                 var element = document.getElementById("navFind");
                 element.classList.add("active");
             })();
-            
         </script>
+        <script src="../scripts/search-tutor.js"></script>
 </body>
 
 </html>

@@ -26,6 +26,7 @@ const resolvers = {
     Test,
     Health,
     Entry,
+    Tutors
   },
   Mutation: {
     UserDelete,
@@ -110,6 +111,11 @@ async function Entry(_, {username}) {
 async function EntryAdd(_, {entry}) {
   await db.collection('entry').insert(entry);
   return entry;
+}
+
+async function Tutors() {
+  const tutors = await db.collection('tutors').find().toArray();
+  return tutors;
 }
 
 async function connectToDb() {
