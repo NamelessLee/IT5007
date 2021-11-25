@@ -53,7 +53,7 @@ app.get('/search-tutor', (req, res) => {
     res.render('search-tutor');
 })
 
-app.get('/display-tutor', (req, res) => {
+app.get('/display-tutor/:username', (req, res) => {
     res.render('display-tutor');
 })
 

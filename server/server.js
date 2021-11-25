@@ -26,7 +26,9 @@ const resolvers = {
     Test,
     Health,
     Entry,
-    Tutors
+    Tutors,
+    FindTutor,
+    Reviews,
   },
   Mutation: {
     TutorAdd,
@@ -131,6 +133,16 @@ async function EntryAdd(_, {entry}) {
 async function Tutors() {
   const tutors = await db.collection('tutors').find().toArray();
   return tutors;
+}
+
+async function FindTutor(_, {username}) {
+  const tutor = await db.collection('tutors').find({username: username}).toArray();
+  return tutor[tutor.length - 1];
+}
+
+async function Reviews(_, {username}) {
+  const reviews = await db.collection('reviews').find({tutorName: username}).toArray();
+  return reviews;
 }
 
 async function connectToDb() {

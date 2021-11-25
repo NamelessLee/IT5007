@@ -139,7 +139,7 @@ function TutorDetail(props) {
   }, /*#__PURE__*/React.createElement("strong", null, tutor.completedLessons), " completed lessons"), /*#__PURE__*/React.createElement("div", {
     className: "mb-1 d-grid gap-2 mt-3"
   }, /*#__PURE__*/React.createElement("a", {
-    href: "/display-tutor",
+    href: '/display-tutor/' + tutor.username,
     className: "btn btn-success btn-lg btn-block"
   }, "See details"))))));
 }
