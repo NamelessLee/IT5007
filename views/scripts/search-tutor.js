@@ -31,23 +31,23 @@ function graphQLFetch(_x) {
 }
 
 function _graphQLFetch() {
-  _graphQLFetch = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(query) {
+  _graphQLFetch = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(query) {
     var variables,
         response,
         body,
         result,
         error,
         details,
-        _args2 = arguments;
-    return regeneratorRuntime.wrap(function _callee2$(_context2) {
+        _args3 = arguments;
+    return regeneratorRuntime.wrap(function _callee3$(_context3) {
       while (1) {
-        switch (_context2.prev = _context2.next) {
+        switch (_context3.prev = _context3.next) {
           case 0:
-            variables = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : {};
+            variables = _args3.length > 1 && _args3[1] !== undefined ? _args3[1] : {};
             console.log("graphQlFetch!!!!");
             console.log("variables= " + JSON.stringify(variables));
-            _context2.prev = 3;
-            _context2.next = 6;
+            _context3.prev = 3;
+            _context3.next = 6;
             return fetch('http://localhost:8080/graphql', {
               method: 'POST',
               headers: {
@@ -61,12 +61,12 @@ function _graphQLFetch() {
             });
 
           case 6:
-            response = _context2.sent;
-            _context2.next = 9;
+            response = _context3.sent;
+            _context3.next = 9;
             return response.text();
 
           case 9:
-            body = _context2.sent;
+            body = _context3.sent;
             console.log("body= " + body);
             result = JSON.parse(body);
 
@@ -81,19 +81,19 @@ function _graphQLFetch() {
               }
             }
 
-            return _context2.abrupt("return", result.data);
+            return _context3.abrupt("return", result.data);
 
           case 16:
-            _context2.prev = 16;
-            _context2.t0 = _context2["catch"](3);
-            alert("Error in sending data to server: ".concat(_context2.t0.message));
+            _context3.prev = 16;
+            _context3.t0 = _context3["catch"](3);
+            alert("Error in sending data to server: ".concat(_context3.t0.message));
 
           case 19:
           case "end":
-            return _context2.stop();
+            return _context3.stop();
         }
       }
-    }, _callee2, null, [[3, 16]]);
+    }, _callee3, null, [[3, 16]]);
   }));
   return _graphQLFetch.apply(this, arguments);
 }
@@ -153,44 +153,280 @@ function DisplayTutors(props) {
   return /*#__PURE__*/React.createElement("div", null, tutorDetails);
 }
 
-var DisplayAllTutors = /*#__PURE__*/function (_React$Component) {
-  _inherits(DisplayAllTutors, _React$Component);
+var SearchTutor = /*#__PURE__*/function (_React$Component) {
+  _inherits(SearchTutor, _React$Component);
 
-  var _super = _createSuper(DisplayAllTutors);
+  var _super = _createSuper(SearchTutor);
 
-  function DisplayAllTutors() {
+  function SearchTutor() {
     var _this;
 
-    _classCallCheck(this, DisplayAllTutors);
+    _classCallCheck(this, SearchTutor);
 
     _this = _super.call(this);
-    _this.state = {
-      numTutors: 0,
-      tutors: []
-    };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(DisplayAllTutors, [{
+  _createClass(SearchTutor, [{
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      this.props.setTutorInput();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+        className: "col-2 mt-3 pt-3 pb-3 container-sm"
+      }, /*#__PURE__*/React.createElement("span", {
+        className: "text-muted"
+      }, "SUBJECT"), /*#__PURE__*/React.createElement("div", {
+        className: "dropdown"
+      }, /*#__PURE__*/React.createElement("select", {
+        className: "drop-down-toggle container-fluid h40",
+        name: "subject",
+        id: "subject"
+      }, /*#__PURE__*/React.createElement("option", {
+        value: "",
+        selected: true
+      }, "All Subjects"), /*#__PURE__*/React.createElement("option", {
+        value: "CS"
+      }, "Computer Science"), /*#__PURE__*/React.createElement("option", {
+        value: "FT"
+      }, "FinTech"), /*#__PURE__*/React.createElement("option", {
+        value: "ST"
+      }, "Statistics")))), /*#__PURE__*/React.createElement("div", {
+        className: "col-2 mt-3 pt-3 pb-3"
+      }, /*#__PURE__*/React.createElement("span", {
+        className: "text-muted"
+      }, "LEVEL"), /*#__PURE__*/React.createElement("div", {
+        className: "dropdown"
+      }, /*#__PURE__*/React.createElement("select", {
+        className: "drop-down-toggle container-fluid h40",
+        name: "level",
+        id: "level"
+      }, /*#__PURE__*/React.createElement("option", {
+        value: "",
+        selected: true
+      }, "All Levels"), /*#__PURE__*/React.createElement("option", {
+        value: "B"
+      }, "Bachelor"), /*#__PURE__*/React.createElement("option", {
+        value: "M"
+      }, "Master"), /*#__PURE__*/React.createElement("option", {
+        value: "D"
+      }, "Doctor")))), /*#__PURE__*/React.createElement("div", {
+        className: "col-2 mt-3 pt-3 pb-3"
+      }, /*#__PURE__*/React.createElement("span", {
+        className: "text-muted"
+      }, "PRICE"), /*#__PURE__*/React.createElement("div", {
+        className: "dropdown"
+      }, /*#__PURE__*/React.createElement("select", {
+        className: "drop-down-toggle container-fluid h40",
+        name: "price",
+        id: "price"
+      }, /*#__PURE__*/React.createElement("option", {
+        value: "",
+        selected: true
+      }, "All Prices"), /*#__PURE__*/React.createElement("option", {
+        value: "S"
+      }, "< $30 / h"), /*#__PURE__*/React.createElement("option", {
+        value: "M"
+      }, "$30 - 50 / h"), /*#__PURE__*/React.createElement("option", {
+        value: "L"
+      }, "> $45 / h")))), /*#__PURE__*/React.createElement("div", {
+        className: "col-2 mt-3 pt-3 pb-3"
+      }, /*#__PURE__*/React.createElement("span", {
+        className: "text-muted"
+      }, "GENDER"), /*#__PURE__*/React.createElement("div", {
+        className: "dropdown"
+      }, /*#__PURE__*/React.createElement("select", {
+        className: "drop-down-toggle container-fluid h40",
+        name: "gender",
+        id: "gender"
+      }, /*#__PURE__*/React.createElement("option", {
+        value: "",
+        selected: true
+      }, "All Genders"), /*#__PURE__*/React.createElement("option", {
+        value: "F"
+      }, "Female"), /*#__PURE__*/React.createElement("option", {
+        value: "M"
+      }, "Male")))), /*#__PURE__*/React.createElement("div", {
+        className: "col-2 mt-3 pt-3 pb-3"
+      }, /*#__PURE__*/React.createElement("span", {
+        className: "text-muted"
+      }, "AVAILABILITY"), /*#__PURE__*/React.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "col-6 dropdown"
+      }, /*#__PURE__*/React.createElement("select", {
+        className: "container-fluid text-sm h40",
+        name: "day",
+        id: "day"
+      }, /*#__PURE__*/React.createElement("option", {
+        className: "text-sm",
+        value: "",
+        selected: true
+      }, "Day"), /*#__PURE__*/React.createElement("option", {
+        value: "1"
+      }, "Mon"), /*#__PURE__*/React.createElement("option", {
+        value: "2"
+      }, "Tue"), /*#__PURE__*/React.createElement("option", {
+        value: "3"
+      }, "Wed"), /*#__PURE__*/React.createElement("option", {
+        value: "4"
+      }, "Thu"), /*#__PURE__*/React.createElement("option", {
+        value: "5"
+      }, "Fri"), /*#__PURE__*/React.createElement("option", {
+        value: "6"
+      }, "Sat"), /*#__PURE__*/React.createElement("option", {
+        value: "7"
+      }, "Sun"))), /*#__PURE__*/React.createElement("div", {
+        className: "col-6 dropdown"
+      }, /*#__PURE__*/React.createElement("select", {
+        className: "drop-down-toggle container-fluid h40",
+        name: "time",
+        id: "time"
+      }, /*#__PURE__*/React.createElement("option", {
+        value: "",
+        selected: true
+      }, "Time"), /*#__PURE__*/React.createElement("option", {
+        value: "00"
+      }, "00"), /*#__PURE__*/React.createElement("option", {
+        value: "01"
+      }, "01"), /*#__PURE__*/React.createElement("option", {
+        value: "02"
+      }, "02"), /*#__PURE__*/React.createElement("option", {
+        value: "03"
+      }, "03"), /*#__PURE__*/React.createElement("option", {
+        value: "04"
+      }, "04"), /*#__PURE__*/React.createElement("option", {
+        value: "05"
+      }, "05"), /*#__PURE__*/React.createElement("option", {
+        value: "06"
+      }, "06"), /*#__PURE__*/React.createElement("option", {
+        value: "07"
+      }, "07"), /*#__PURE__*/React.createElement("option", {
+        value: "08"
+      }, "08"), /*#__PURE__*/React.createElement("option", {
+        value: "09"
+      }, "09"), /*#__PURE__*/React.createElement("option", {
+        value: "10"
+      }, "10"), /*#__PURE__*/React.createElement("option", {
+        value: "11"
+      }, "11"), /*#__PURE__*/React.createElement("option", {
+        value: "12"
+      }, "12"), /*#__PURE__*/React.createElement("option", {
+        value: "13"
+      }, "13"), /*#__PURE__*/React.createElement("option", {
+        value: "14"
+      }, "14"), /*#__PURE__*/React.createElement("option", {
+        value: "15"
+      }, "15"), /*#__PURE__*/React.createElement("option", {
+        value: "16"
+      }, "16"), /*#__PURE__*/React.createElement("option", {
+        value: "17"
+      }, "17"), /*#__PURE__*/React.createElement("option", {
+        value: "18"
+      }, "18"), /*#__PURE__*/React.createElement("option", {
+        value: "19"
+      }, "19"), /*#__PURE__*/React.createElement("option", {
+        value: "20"
+      }, "20"), /*#__PURE__*/React.createElement("option", {
+        value: "21"
+      }, "21"), /*#__PURE__*/React.createElement("option", {
+        value: "22"
+      }, "22"), /*#__PURE__*/React.createElement("option", {
+        value: "23"
+      }, "23"))))), /*#__PURE__*/React.createElement("div", {
+        className: "col-2 mt-3 pt-3 pb-3"
+      }, /*#__PURE__*/React.createElement("span", {
+        className: "whiteColor"
+      }, "Search"), /*#__PURE__*/React.createElement("button", {
+        type: "button",
+        onClick: this.handleSubmit,
+        className: "btn btn-success container-fluid"
+      }, "Search")));
+    }
+  }]);
+
+  return SearchTutor;
+}(React.Component);
+
+var AllContents = /*#__PURE__*/function (_React$Component2) {
+  _inherits(AllContents, _React$Component2);
+
+  var _super2 = _createSuper(AllContents);
+
+  function AllContents() {
+    var _this2;
+
+    _classCallCheck(this, AllContents);
+
+    _this2 = _super2.call(this);
+    _this2.state = {
+      numTutors: 0,
+      tutors: []
+    };
+    _this2.setTutorInput = _this2.setTutorInput.bind(_assertThisInitialized(_this2));
+    _this2.loadData = _this2.loadData.bind(_assertThisInitialized(_this2));
+    return _this2;
+  }
+
+  _createClass(AllContents, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       this.loadData();
     }
   }, {
-    key: "loadData",
+    key: "setTutorInput",
     value: function () {
-      var _loadData = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-        var query, data;
+      var _setTutorInput = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(tutorInput) {
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                query = "query {\n            Tutors {\n                username\n                gender\n                courseType\n                courses\n                price\n                availability\n                level\n                degree\n                completedLessons\n                numReviews\n                stars\n                intro\n            }\n        }";
-                _context.next = 3;
+                _context.next = 2;
+                return this.loadData();
+
+              case 2:
+                document.getElementById('subject').value = "";
+                document.getElementById('level').value = "";
+                document.getElementById('price').value = "";
+                document.getElementById('gender').value = "";
+                document.getElementById('day').value = "";
+                document.getElementById('time').value = "";
+
+              case 8:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function setTutorInput(_x2) {
+        return _setTutorInput.apply(this, arguments);
+      }
+
+      return setTutorInput;
+    }()
+  }, {
+    key: "loadData",
+    value: function () {
+      var _loadData = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+        var availability, query, data;
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                availability = document.getElementById('day').value + document.getElementById('time').value;
+                query = "query {\n            Tutors(tutorInput: {\n                courseType: \"".concat(document.getElementById('subject').value, "\",\n                level: \"").concat(document.getElementById('level').value, "\",\n                price: \"").concat(document.getElementById('price').value, "\",\n                gender: \"").concat(document.getElementById('gender').value, "\",\n                availability: \"").concat(availability, "\",\n            }) {\n                    username\n                    gender\n                    courseType\n                    courses\n                    price\n                    availability\n                    level\n                    degree\n                    completedLessons\n                    numReviews\n                    stars\n                    intro\n                }\n        }");
+                _context2.next = 4;
                 return graphQLFetch(query);
 
-              case 3:
-                data = _context.sent;
+              case 4:
+                data = _context2.sent;
 
                 if (data) {
                   this.setState({
@@ -201,12 +437,12 @@ var DisplayAllTutors = /*#__PURE__*/function (_React$Component) {
                   });
                 }
 
-              case 5:
+              case 6:
               case "end":
-                return _context.stop();
+                return _context2.stop();
             }
           }
-        }, _callee, this);
+        }, _callee2, this);
       }));
 
       function loadData() {
@@ -219,18 +455,51 @@ var DisplayAllTutors = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+        className: "container-fluid mt-3 pt-3 mb-3 pb-3"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "col-10 offset-1 whiteBackground"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "container"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/React.createElement(SearchTutor, {
+        setTutorInput: this.setTutorInput
+      })))))), /*#__PURE__*/React.createElement("div", {
+        className: "container-fluid mt-3 pt-3"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "col-7 offset-1"
+      }, /*#__PURE__*/React.createElement("div", {
         className: "mt-3 mb-3 h2"
       }, /*#__PURE__*/React.createElement("em", {
         className: "p-1",
         id: "availableNum"
       }, this.state.numTutors), " tutors available online!"), /*#__PURE__*/React.createElement(DisplayTutors, {
         tutors: this.state.tutors
-      }));
+      })), /*#__PURE__*/React.createElement("div", {
+        className: "col-3"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "container-fluid"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "col-12 offset-1 whiteBackground"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "h5 mt-3"
+      }, "Haven't found satisfactory tutors?"), /*#__PURE__*/React.createElement("div", null, "Your tutor in need might haven't signed up to be a tutor yet. By clicking the button, our service will generate system messages to NUS students complying with your requirements above, and thus will get more tutors posting!"), /*#__PURE__*/React.createElement("div", {
+        className: "mb-3 d-grid gap-2 mt-3"
+      }, /*#__PURE__*/React.createElement("button", {
+        type: "button",
+        className: "btn btn-info btn-lg btn-block"
+      }, "Find Specialized Tutor")))))))));
     }
   }]);
 
-  return DisplayAllTutors;
+  return AllContents;
 }(React.Component);
 
-var displayAllTutors = /*#__PURE__*/React.createElement(DisplayAllTutors, null);
-ReactDOM.render(displayAllTutors, document.getElementById('wrapDisplayTutors'));
+var allContents = /*#__PURE__*/React.createElement(AllContents, null);
+ReactDOM.render(allContents, document.getElementById('contents'));

@@ -16,15 +16,23 @@
         .dropdown-toggle {
             width: 100%,
         }
+
         .whiteBackground {
             background-color: whitesmoke;
+        }
+        .whiteColor {
+            color: whitesmoke;
+        }
+        select.h40 {
+            height: 40px;
         }
         .marginAuto {
             margin: auto;
         }
+
         #availableNum {
             background-color: darkblue;
-            color:whitesmoke;
+            color: whitesmoke;
         }
     </style>
 </head>
@@ -32,190 +40,7 @@
 <body style="background-color: lightblue;">
     <%- include('./partials/tutor-navbar')%>
 
-        <!-- top drop-down bar -->
-        <div class="container-fluid mt-3 pt-3 mb-3 pb-3">
-            <div class="row">
-                <div class="col-10 offset-1" style="background-color: whitesmoke;">
-                    <div class="container">
-                        <div class="row">
-                            <!-- choose subject -->
-                            <div class="col-2 mt-3 pt-3 pb-3 container-sm">
-                                <span class="text-muted">SUBJECT</span>
-                                <div class="dropdown">
-
-                                    <a class="btn border dropdown-toggle container-fluid" href="#" role="button"
-                                        id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                        All subjects
-                                    </a>
-
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <li><a class="dropdown-item" href="#">FinTech</a></li>
-                                        <li><a class="dropdown-item" href="#">Computer Science</a></li>
-                                        <li><a class="dropdown-item" href="#">Information Systems</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- choose level: master, doctor... -->
-                            <div class="col-2 mt-3 pt-3 pb-3">
-                                <span class="text-muted">LEVEL</span>
-                                <div class="dropdown">
-                                    <a class="btn border dropdown-toggle container-fluid" href="#" role="button"
-                                        id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                        All levels
-                                    </a>
-
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <li><a class="dropdown-item" href="#">Doctor</a></li>
-                                        <li><a class="dropdown-item" href="#">Master</a></li>
-                                        <li><a class="dropdown-item" href="#">Bachelor</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- choose price level -->
-                            <div class="col-2 mt-3 pt-3 pb-3">
-                                <span class="text-muted">PRICE</span>
-                                <div class="dropdown">
-                                    <a class="btn border dropdown-toggle container-fluid" href="#" role="button"
-                                        id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                        All prices
-                                    </a>
-
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <li><a class="dropdown-item" href="#">$15 - 25 / h</a></li>
-                                        <li><a class="dropdown-item" href="#">$26 - 35 / h</a></li>
-                                        <li><a class="dropdown-item" href="#">$36 - 45 / h</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- choose gender -->
-                            <div class="col-2 mt-3 pt-3 pb-3">
-                                <span class="text-muted">GENDER</span>
-                                <div class="dropdown">
-
-                                    <a class="btn border dropdown-toggle container-fluid" href="#" role="button"
-                                        id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                        All gender
-                                    </a>
-                                    <div class="dropdown-menu">
-                                        <span class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="female"
-                                                checked>
-                                            <label class="form-check-label" for="female">
-                                                Female
-                                            </label>
-
-                                        </span>
-                                        <span class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" value="" id="male" checked>
-                                            <label class="form-check-label" for="male">
-                                                Male
-                                            </label>
-                                        </span>
-                                    </div>
-                                </div>
-
-
-
-                            </div>
-
-                            <!-- choose availability -->
-                            <div class="col-2 mt-3 pt-3 pb-3">
-                                <span class="text-muted">AVAILABILITY</span>
-                                <div class="dropdown">
-                                    <a class="btn border dropdown-toggle container-fluid" href="#" role="button"
-                                        id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                        All availability
-                                    </a>
-
-                                    <form class="dropdown-menu p-4">
-                                        <!-- time of day -->
-                                        <div class="text-muted">Time of Day</div>
-                                        <div class="btn-group" role="group"
-                                            aria-label="Basic radio toggle button group">
-                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
-                                                autocomplete="off" checked>
-                                            <label class="btn btn-success" for="btnradio1">8-12</label>
-
-                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
-                                                autocomplete="off">
-                                            <label class="btn btn-success" for="btnradio2">12-17</label>
-
-                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
-                                                autocomplete="off">
-                                            <label class="btn btn-success" for="btnradio3">19-23</label>
-                                        </div>
-                                        <!-- day of week -->
-                                        <div class="text-muted">Day of Week</div>
-                                        <div class="btn-group" role="group"
-                                            aria-label="Basic radio toggle button group">
-                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
-                                                autocomplete="off" checked>
-                                            <label class="btn btn-success" for="btnradio1">MON</label>
-
-                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
-                                                autocomplete="off">
-                                            <label class="btn btn-success" for="btnradio2">TUE</label>
-
-                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
-                                                autocomplete="off">
-                                            <label class="btn btn-success" for="btnradio3">WED</label>
-                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
-                                                autocomplete="off">
-                                            <label class="btn btn-success" for="btnradio3">THU</label>
-                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
-                                                autocomplete="off">
-                                            <label class="btn btn-success" for="btnradio3">FRI</label>
-                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
-                                                autocomplete="off">
-                                            <label class="btn btn-success" for="btnradio3">SAT</label>
-                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
-                                                autocomplete="off">
-                                            <label class="btn btn-success" for="btnradio3">SUN</label>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="col-2 mt-3 pt-3 pb-3">
-                                <span style="color: whitesmoke;">Search</span>
-                                <button type="button" class="btn btn-success container-fluid">Search</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container-fluid mt-3 pt-3">
-            <div class="row">
-                <div class="col-7 offset-1" id="wrapDisplayTutors">
-
-                </div>
-
-                <div class="col-3">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <!-- display on the right -->
-                            <div class="col-12 offset-1" style="background-color: whitesmoke;">
-                                <div class="h5 mt-3">
-                                    Haven't found satisfactory tutors?
-                                </div>
-                                <div>
-                                    Your tutor in need might haven't signed up to be a tutor yet. By clicking the
-                                    button, our service will generate system messages to NUS students complying with
-                                    your requirements above, and thus will get more tutors posting!
-                                </div>
-                                <div class="mb-3 d-grid gap-2 mt-3">
-                                    <button type="button" class="btn btn-info btn-lg btn-block">
-                                        Find Specialized
-                                        Tutor
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div id="contents"></div>
 
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
@@ -234,7 +59,7 @@
         </script>
         <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
         <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-      
+
         <script src="https://unpkg.com/@babel/polyfill@7/dist/polyfill.min.js"></script>
         <script src="https://unpkg.com/whatwg-fetch@3.0.0/dist/fetch.umd.js"></script>
         <script src="../scripts/search-tutor.js"></script>

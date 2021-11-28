@@ -39,22 +39,22 @@ const resolvers = {
   }
 };
 
-async function TutorAdd(_, {tutor}) {
+async function TutorAdd(_, { tutor }) {
   var tutors = await db.collection('tutors').find().toArray();
   //console.log(JSON.stringify(tutors));
-  for(let i=0; i<tutors.length;i++){
-    if(tutors[i].username == tutor.username){
+  for (let i = 0; i < tutors.length; i++) {
+    if (tutors[i].username == tutor.username) {
       return [];//already exists
-    } 
+    }
   }
   await db.collection('tutors').insert(tutor);
-  var tutors = await db.collection('tutors').find({username:tutor.username}).toArray();
+  var tutors = await db.collection('tutors').find({ username: tutor.username }).toArray();
   return tutors;
 }
 
-async function UserDelete(_, {username}) {
-  const result = await db.collection('users').deleteOne({username: username});
-  return result.result.n; 
+async function UserDelete(_, { username }) {
+  const result = await db.collection('users').deleteOne({ username: username });
+  return result.result.n;
 }
 
 async function AllUsers() {
@@ -62,54 +62,54 @@ async function AllUsers() {
   return users;
 }
 
-async function UserAdd(_, {user}) {
+async function UserAdd(_, { user }) {
   const users = await db.collection('users').find().toArray();
-  var id = users[users.length-1].id;
-  for(let i = 0; i < users.length; i++){
-    if(user.username == users[i].username){
+  var id = users[users.length - 1].id;
+  for (let i = 0; i < users.length; i++) {
+    if (user.username == users[i].username) {
       console.log("duplicate!!!");
       return -1;
     }
   }
   id++;
-  console.log("id= "+id);
+  console.log("id= " + id);
   user.id = id;
   console.log(user);
   await db.collection('users').insert(user);
-  const newUser = await db.collection('users').find({username: user.username}).toArray();
+  const newUser = await db.collection('users').find({ username: user.username }).toArray();
   console.log(newUser);
   return newUser;
 }
 
-async function Building(_, {date}) {
-  const buildings = await db.collection('buildings').find({Date: date}).toArray();
+async function Building(_, { date }) {
+  const buildings = await db.collection('buildings').find({ Date: date }).toArray();
   return buildings;
 }
 
-async function Positive(_, {date}) {
-  const positives = await db.collection('positive').find({Date: date}).toArray();
+async function Positive(_, { date }) {
+  const positives = await db.collection('positive').find({ Date: date }).toArray();
   return positives;
 }
 
-function Test(_, {id}) {
-  var res = "id="+ id;
-  console.log("id="+ id);
+function Test(_, { id }) {
+  var res = "id=" + id;
+  console.log("id=" + id);
   return res;
 }
 
-async function User(_, {user}) {
+async function User(_, { user }) {
   let username = user.username;
-  const users = await db.collection('users').find({username: username}).toArray();
-  console.log("users="+ JSON.stringify(users));
+  const users = await db.collection('users').find({ username: username }).toArray();
+  console.log("users=" + JSON.stringify(users));
   return users;
 }
 
-async function Health(_, {username}) {
-  const health = await db.collection('health').find({username: username}).toArray();
+async function Health(_, { username }) {
+  const health = await db.collection('health').find({ username: username }).toArray();
   return health[health.length - 1];
 }
 
-async function HealthAdd(_, {health}) {
+async function HealthAdd(_, { health }) {
   const date = (new Date()).toISOString().split('T')[0].split('-');
   health.date = date[0] + date[1] + date[2];
   const size = health.symptoms.length;
@@ -120,28 +120,50 @@ async function HealthAdd(_, {health}) {
   return health;
 }
 
-async function Entry(_, {username}) {
-  const entry = await db.collection('entry').find({username: username}).toArray();
+async function Entry(_, { username }) {
+  const entry = await db.collection('entry').find({ username: username }).toArray();
   return entry;
 }
 
-async function EntryAdd(_, {entry}) {
+async function EntryAdd(_, { entry }) {
   await db.collection('entry').insert(entry);
   return entry;
 }
 
-async function Tutors() {
-  const tutors = await db.collection('tutors').find().toArray();
+async function Tutors(_, { tutorInput }) {
+  const gender = tutorInput.gender;
+  const availability = tutorInput.availability[0];
+  const courseType = tutorInput.courseType[0];
+  const level = tutorInput.level;
+  const price = tutorInput.price;
+  let tutors = await db.collection('tutors').find().toArray();
+  tutors = tutors.filter(filterTutors);
+  function filterTutors(tutor) {
+    const courseSet = new Set(tutor.courseType);
+    const availabilitySet = new Set(tutor.availability);
+    const tutorPrice = tutor.price;
+    return (gender == "" || tutor.gender == gender) && (availability == "" || availabilitySet.has(availability))
+    && (courseType == "" || courseSet.has(courseType)) && (level == "" || levelCompare(tutor.level, level))
+    && (price == "" || (price == "S" && tutorPrice[0] <= 30) || (price == "M" && tutorPrice[0] <= 50)) ;
+  }
   return tutors;
 }
 
-async function FindTutor(_, {username}) {
-  const tutor = await db.collection('tutors').find({username: username}).toArray();
+function levelCompare(tutorLevel, wantedLevel) {
+  if (wantedLevel == 'M' && tutorLevel == 'B') return false;
+  if (wantedLevel == 'D' && (tutorLevel == 'B' || tutorLevel == 'M')) return false;
+  return true;
+}
+
+
+
+async function FindTutor(_, { username }) {
+  const tutor = await db.collection('tutors').find({ username: username }).toArray();
   return tutor[tutor.length - 1];
 }
 
-async function Reviews(_, {username}) {
-  const reviews = await db.collection('reviews').find({tutorName: username}).toArray();
+async function Reviews(_, { username }) {
+  const reviews = await db.collection('reviews').find({ tutorName: username }).toArray();
   return reviews;
 }
 
@@ -151,7 +173,7 @@ async function connectToDb() {
   console.log('Connected to MongoDB at', url);
   db = client.db();
   const myCollections = await db.listCollections().toArray();
-  console.log("myCollections= "+ JSON.stringify(myCollections));
+  console.log("myCollections= " + JSON.stringify(myCollections));
 }
 
 const server = new ApolloServer({
@@ -167,14 +189,14 @@ const app = express();
 
 app.use(express.static('public'));
 
-app.all("*",function(req,res,next){
-  res.header("Access-Control-Allow-Origin","*");
-  res.header("Access-Control-Allow-Headers","content-type");
-  res.header("Access-Control-Allow-Methods","DELETE,PUT,POST,GET,OPTIONS");
+app.all("*", function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "content-type");
+  res.header("Access-Control-Allow-Methods", "DELETE,PUT,POST,GET,OPTIONS");
   if (req.method.toLowerCase() == 'options')
-      res.sendStatus(200);
+    res.sendStatus(200);
   else
-      next();
+    next();
 });
 
 server.applyMiddleware({ app, path: '/graphql' });

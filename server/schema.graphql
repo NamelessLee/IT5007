@@ -119,7 +119,7 @@ type Query {
   Test(id: Int):String
   Health(username: String!): Health
   Entry(username: String!): [Entry]
-  Tutors:[Tutor]
+  Tutors(tutorInput: TutorInput):[Tutor]
   FindTutor(username: String!): Tutor
   Reviews(username: String!): [Review]
 }
