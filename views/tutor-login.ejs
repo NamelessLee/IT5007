@@ -20,17 +20,15 @@
         
     </style>
     <script language="Javascript">
-        function tutorLogin(){
-            document.getElementById("tutorlogin").style.display= "none";
-            document.getElementById("helloTutor").style.display= "block";
-            document.getElementById("notifications").style.display= "block";
-            document.getElementById("msgs").style.display= "block";
-            document.getElementById("img").style.display= "none";
-        }
-        function chat(){
+        
+        
+
+        function chat(stu){
             document.getElementById("msgs").style.display="none";
             document.getElementById("chat").style.display="block";
             document.getElementById("calendar").style.display="block";
+
+            document.getElementById("chatTitle").innerText = 'Chat With ' + stu;
         }
         function backToTotorHome(){
             document.getElementById("msgs").style.display="block";
@@ -59,13 +57,13 @@
           <legend>Tutor Login</legend>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Username</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="email" class="form-control" name="username" aria-describedby="emailHelp">
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            <input type="password" class="form-control" name="password">
           </div>
-          <button type="button" class="btn btn-primary" onClick="tutorLogin()">Submit</button>
+          <button type="button" class="btn btn-primary" onClick="tutorLogin(this.form)">Submit</button>
           <button type="reset" class="btn btn-secondary">Reset</button>
         </form>
       </div>
@@ -73,25 +71,25 @@
         style="display: none; margin: 20px; padding:20px;  border:peachpuff 2px solid; border-radius:10px; background-color: white; float:left;width:85%">
         <img src="./img/tutorPhoto.jpeg" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">Tom Smith</h5>
-          <p class="card-text">I love tutoring and have spent thousands of hours conducting tutorials myself as well as
+          <h5 id="tutorDetailName" class="card-title">Tom Smith</h5>
+          <p id="tutorDetailIntro"  class="card-text">I love tutoring and have spent thousands of hours conducting tutorials myself as well as
             being the student.</p>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item"><label>Offers:</label>
-            <div style="float:right">CS, IS</div>
+            <div id="tutorDetailTypes" style="float:right">CS, IS</div>
           </li>
           <li class="list-group-item"><label>Rate:</label>
-            <div style="float:right">5.0</div>
+            <div id="tutorDetailRate" style="float:right">5.0</div>
           </li>
           <li class="list-group-item"><label>Completed Lessons:</label>
-            <div style="float:right">210</div>
+            <div id="tutorDetailCompletedLessons"  style="float:right">210</div>
           </li>
           <li class="list-group-item"><label>Tuition Fee:</label>
-            <div style="float:right">$40~60/h</div>
+            <div id="tutorDetailFee" style="float:right">$40~60/h</div>
           </li>
           <li class="list-group-item"><label>Degree:</label>
-            <div style="float:right">Master</div>
+            <div id="tutorDetailDegree" style="float:right">Master</div>
           </li>
         </ul>
         <div class="card-body">
@@ -104,7 +102,7 @@
     </div>
     <div class="col-6" id="chat" style="display:none; margin-top: 23px;">
         <div style="margin-right: 50px;">
-            <span style="border:aqua 1px solid; border-radius: 10px; font-size:30px; background-color: white; padding:10px; color:rgb(93, 231, 231)">
+            <span id="chatTitle" style="border:aqua 1px solid; border-radius: 10px; font-size:30px; background-color: white; padding:10px; color:rgb(93, 231, 231)">
                     Chat with Lang Qianqian  
             </span>
             
@@ -127,7 +125,7 @@
         <div style=" margin: 20px; padding:20px;  border:peachpuff 2px solid; border-radius:10px; background-color: white; float:right; width:100%">
             <h3>My Messages</h3>
             <ol class="list-group ">
-            <a href="javascript:void(0);" onclick="chat()" class="list-group-item list-group-item-action">
+            <a href="javascript:void(0);" onclick="chat('Lang Qianqian')" class="list-group-item list-group-item-action">
                 <li style="border:0px" class="list-group-item d-flex justify-content-between align-items-start">
                   <div class="ms-2 me-auto">
                     <div class="fw-bold">Lang Qianqian</div>
@@ -138,7 +136,7 @@
                   <span class="badge bg-primary rounded-pill">1</span>
                 </li>
             </a>
-            <a href="#" class="list-group-item list-group-item-action">
+            <a href="#" onclick="chat('Li Xinyue')" class="list-group-item list-group-item-action">
                 <li style="border:0px" class="list-group-item d-flex justify-content-between align-items-start">
                   <div class="ms-2 me-auto">
                     <div class="fw-bold">Li Xinyue</div>
@@ -148,10 +146,10 @@
                   <span class="badge bg-primary rounded-pill">2</span>
                 </li>
             </a>
-            <a href="#" class="list-group-item list-group-item-action">
+            <a href="#" onclick="chat('John')" class="list-group-item list-group-item-action">
                 <li style="border:0px" class="list-group-item d-flex justify-content-between align-items-start">
                   <div class="ms-2 me-auto">
-                    <div class="fw-bold">Some Student</div>
+                    <div class="fw-bold">John</div>
                     Could you help me with this problems in the photos I have sent above? Thanks!
                   </div>
                   <small style="color: gray;">2 days ago</small>
@@ -253,15 +251,15 @@
                   </div>
                   <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Time:</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <input type="password" class="form-control">
                   </div>
                   <div class="mb-3">
                       <label for="exampleInputPassword1" class="form-label">Fee:</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1">
+                      <input type="password" class="form-control" >
                   </div>
                   <div class="mb-3">
                       <label for="exampleInputPassword1" class="form-label">Location:</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1">
+                      <input type="password" class="form-control">
                   </div>
                   <button type="submit" class="btn btn-primary">Submit</button>
                   <button type="reset" class="btn btn-secondary">Reset</button>
@@ -285,6 +283,121 @@
       var element = document.getElementById("navLogin");
       element.classList.add("active");
     })();
+
+    const dateRegex = new RegExp('^\\d\\d\\d\\d-\\d\\d-\\d\\d');
+            async function graphQLFetch(query, variables = {}) {
+            try {
+                const response = await fetch('http://localhost:8080/graphql', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json'},
+                    withCredentials: true,
+                    body: JSON.stringify({ query, variables })
+                });
+                const body = await response.text();
+
+                const result = JSON.parse(body, jsonDateReviver);
+  
+                if (result.errors) {
+                    const error = result.errors[0];
+                    if (error.extensions.code == 'BAD_USER_INPUT') {
+                        const details = error.extensions.exception.errors.join('\n ');
+                        alert(`${error.message}:\n ${details}`);
+                    } else {
+                        alert(`${error.extensions.code}: ${error.message}`);
+                    }
+                }
+                return result.data;
+                } catch (e) {
+                alert(`Error in sending data to server: ${e.message}`);
+                }
+            }
+
+            function jsonDateReviver(key, value) {
+                if (dateRegex.test(value)) return new Date(value);
+                return value;
+            }
+
+    async function tutorLogin(form){
+          var tutor = {
+            username: form.username.value,
+            password: form.password.value
+          }
+          const query = `query {
+                  TutorLogin(tutor: {username: "${tutor.username}", password: "${tutor.password}"})
+                  {
+                      username
+                      gender
+                      courseType
+                      courses
+                      price
+                      availability
+                      level
+                      degree
+                      completedLessons
+                      numReviews
+                      stars
+                      intro
+                  }
+              }`;
+             
+          var data = await graphQLFetch(query, { tutor });
+          //console.log(JSON.stringify(data));
+          var TutorLogin = data.TutorLogin;
+          if(TutorLogin.length == 0){
+            alert("Failed. Incorrect username or password.");
+          }
+            else {
+              renderTutorDetail(TutorLogin[0]);
+            }
+        }
+
+        async function renderTutorDetail(tutor){
+         
+              document.getElementById("tutorlogin").style.display= "none";
+              document.getElementById("helloTutor").style.display= "block";
+              document.getElementById("notifications").style.display= "block";
+              document.getElementById("msgs").style.display= "block";
+              document.getElementById("img").style.display= "none";
+
+              const query = `query {
+                AllUsers{
+                  username
+                  password
+                  name
+                  type
+                  dorm
+                  courses
+                }
+              }`;//no ()
+              const data = await graphQLFetch(query);
+              var name = '';
+              for(let i=1; i<data.AllUsers.length;i++){
+                if(data.AllUsers[i].username == tutor.username){
+                  name = data.AllUsers[i].name;
+                }
+              }
+              console.log(tutor);
+              var Types = '';
+              for(let i = 0; i < tutor.courses.length; i++){
+                Types += tutor.courses[i] + ', '
+              }
+              var Degree = 'Bachelor';
+              if(tutor.level =='D'){
+                Degree = 'Doctor';
+              } else if(tutor.level == 'M'){
+                Degree = 'Master'
+              }
+              
+              
+              document.getElementById("tutorDetailName").innerText = name;
+              document.getElementById("tutorDetailIntro").innerText = tutor.intro;
+              document.getElementById("tutorDetailTypes").innerText = Types;
+              document.getElementById("tutorDetailRate").innerText = tutor.stars;
+              document.getElementById("tutorDetailCompletedLessons").innerText = tutor.completedLessons;
+              document.getElementById("tutorDetailFee").innerText = '$' + tutor.price[0] + '~' + tutor.price[1] + '/h';
+              document.getElementById("tutorDetailDegree").innerText = Degree;
+
+        }
   </script>
 </body>
 

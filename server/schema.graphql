@@ -111,6 +111,7 @@ type Review {
 }
 
 type Query {
+  TutorLogin(tutor: UserInput): [Tutor]
   AllUsers: [User]
   Building(date: String): [Building]
   Positive(date: String): [Positive]

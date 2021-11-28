@@ -18,6 +18,7 @@ let aboutMessage = "Safe Management";
 
 const resolvers = {
   Query: {
+    TutorLogin,
     AllUsers,
     Building,
     Positive,
@@ -38,6 +39,22 @@ const resolvers = {
     EntryAdd,
   }
 };
+
+async function TutorLogin(_, { tutor }){
+  var username = tutor.username;
+  var password = tutor.password;
+  var result1 = await db.collection('tutors').find({username: username}).toArray();
+
+  var result2 = await db.collection('users').find({username: username, password: password}).toArray();
+
+  if(result1.length == 0 || result2.length == 0){
+    return [];
+  }
+  else {
+    return result1;
+  }
+  
+}
 
 async function TutorAdd(_, { tutor }) {
   var tutors = await db.collection('tutors').find().toArray();
