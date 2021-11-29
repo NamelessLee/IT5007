@@ -118,7 +118,7 @@ function TutorDetail(props) {
     className: "col-6 p-3 border-right"
   }, /*#__PURE__*/React.createElement("div", {
     className: "h5"
-  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", null, tutor.username))), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", null, tutor.name))), /*#__PURE__*/React.createElement("div", {
     className: "text-muted"
   }, tutor.degree), /*#__PURE__*/React.createElement("div", {
     className: "small"
@@ -421,7 +421,7 @@ var AllContents = /*#__PURE__*/function (_React$Component2) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 availability = document.getElementById('day').value + document.getElementById('time').value;
-                query = "query {\n            Tutors(tutorInput: {\n                courseType: \"".concat(document.getElementById('subject').value, "\",\n                level: \"").concat(document.getElementById('level').value, "\",\n                price: \"").concat(document.getElementById('price').value, "\",\n                gender: \"").concat(document.getElementById('gender').value, "\",\n                availability: \"").concat(availability, "\",\n            }) {\n                    username\n                    gender\n                    courseType\n                    courses\n                    price\n                    availability\n                    level\n                    degree\n                    completedLessons\n                    numReviews\n                    stars\n                    intro\n                }\n        }");
+                query = "query {\n            Tutors(tutorInput: {\n                courseType: \"".concat(document.getElementById('subject').value, "\",\n                level: \"").concat(document.getElementById('level').value, "\",\n                price: \"").concat(document.getElementById('price').value, "\",\n                gender: \"").concat(document.getElementById('gender').value, "\",\n                availability: \"").concat(availability, "\",\n            }) {\n                    username\n                    name\n                    gender\n                    courseType\n                    courses\n                    price\n                    availability\n                    level\n                    degree\n                    completedLessons\n                    numReviews\n                    stars\n                    intro\n                }\n        }");
                 _context2.next = 4;
                 return graphQLFetch(query);
 

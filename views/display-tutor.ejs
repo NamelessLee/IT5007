@@ -16,6 +16,9 @@
     .checked {
       color: orange;
     }
+    .marginAuto {
+      margin: auto;
+    }
   </style>
 
 </head>
@@ -28,6 +31,77 @@
       <div class="row">
         <!-- left part of the page -->
         <div id="contents" class="col-7 offset-1 p-3" style="background-color: whitesmoke">
+          <div class="mt-3 pt-3">
+            <div class="container">
+              <div class="row">
+  
+                <div class="col-3 marginAuto tutorPhoto">
+                  <img class="container-fluid" src='https://image.freepik.com/free-icon/important-person_318-10744.jpg' />
+                </div>
+  
+                <div class="col-9">
+                  <div class="h5">
+                    <div class="d-flex justify-content-between">
+                      <div id="username"></div>
+                      <div>$<span id="price0"></span>-<span id="price1"></span>/hr</div>
+                    </div>
+                  </div>
+                  <div class="text-muted" id="degree"></div>
+                  <div class="stars mt-3">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                  </div>
+  
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="pt-3 mt-3">
+            <h5>About me</h5>
+            <p id="intro">
+            </p>
+          </div>
+  
+          <div class="pt-3">
+            <h5>Courses offered</h5>
+            <!-- todo: courses -->
+            <div id="wrapCourses"></div>
+          </div>
+
+          <!-- reviews -->
+          <div class="pt-3 mt-3">
+            <h5>Ratings & Reviews</h5>
+            <div class="container-fluid">
+              <div class="row border-bottom py-1">
+                <div class="stars">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                </div>
+                <span class="fst-italic"><span id="numReviews"></span> reviews</span>
+              </div>
+    
+              <div class="row border-bottom py-1">
+                <div class="stars">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                </div>
+
+                <!-- todo: reviews -->
+                <div id="wrapReviews"></div>
+
+              </div>
+            </div>
+          </div>
         </div>
 
 
@@ -104,6 +178,7 @@
     <script src="https://unpkg.com/@babel/polyfill@7/dist/polyfill.min.js"></script>
     <script src="https://unpkg.com/whatwg-fetch@3.0.0/dist/fetch.umd.js"></script>
     <script src="../scripts/display-tutor.js"></script>
+    <!-- <script src="../scripts/display-tutor-1.js"></script> -->
 </body>
 
 </html>

@@ -15,6 +15,7 @@ input TutorInput {
 
 type Tutor {
   username: String,
+  name: String,
   gender: String,
   courseType:[String],
   courses:[String],

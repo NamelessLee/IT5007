@@ -140,6 +140,7 @@ const initialBuildings = [{
 }];
 const initialTutors = [{
   username: 'PKV',
+  name: 'Dr.Prasanna',
   gender: 'M',
   courseType: ['CS', 'FT'],
   courses: ['CS3443', 'IT5001', 'FT5309'],
@@ -154,6 +155,7 @@ const initialTutors = [{
   intro: 'I love tutoring and I am also a big fan of computer science. The thought of combining these two together makes me so excited, and I am happy to help other students in CS.'
 }, {
   username: '1',
+  name: 'Corona',
   gender: 'F',
   courseType: ['CS', 'ST'],
   courses: ['CS3443', 'IT5002', 'ST5300'],
