@@ -16,11 +16,15 @@ app.use(express.urlencoded({extended: true}));
 
 
 app.get('/home',(req,res) => {
+    console.log("home starts at " + performance.now());
     res.render('home');
+    console.log("home ends at " + performance.now());
 });
 
 app.get('/', (req,res) => {
+    console.log("login starts at " + performance.now());
     res.render('login');
+    console.log("login ends at " + performance.now());
 });
 
 app.get('/sign-up', (req, res) => {
@@ -50,7 +54,9 @@ app.get('/admin', (req, res) => {
 // tutor module
 // first enter tutor search from homepage sidebar
 app.get('/search-tutor', (req, res) => {
+    console.log("search tutor starts at " + performance.now());
     res.render('search-tutor');
+    console.log("search tutor ends at " + performance.now());
 })
 
 app.get('/display-tutor/:username', (req, res) => {
