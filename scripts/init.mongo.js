@@ -171,25 +171,25 @@ const initialTutors = [{
 const initialReviews = [{
   date: '20201220',
   tutorName: 'PKV',
-  studentName: 'A0242694X',
+  studentName: 'Qianqian',
   stars: 5,
   content: 'Wonderful tutor who gives so many feedbacks on my progress.'
 }, {
   date: '20200805',
   tutorName: 'PKV',
-  studentName: 'A0242720R',
+  studentName: 'Xinyue',
   stars: 5,
   content: 'Wonderful tutor who gives so many feedbacks on my progress.'
 }, {
   date: '20201221',
   tutorName: '1',
-  studentName: 'A0242694X',
+  studentName: 'Qianqian',
   stars: 4,
   content: 'Wonderful tutor in general, hope could be more on-time.'
 }, {
   date: '20201220',
   tutorName: '1',
-  studentName: 'A0242720R',
+  studentName: 'Xinyue',
   stars: 5,
   content: 'Wonderful tutor who gives so many feedbacks on my progress.'
 }];

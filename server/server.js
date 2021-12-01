@@ -5,16 +5,10 @@ const { GraphQLScalarType } = require('graphql');
 const { Kind } = require('graphql/language');
 const { MongoClient } = require('mongodb');
 
-const url = 'mongodb://localhost/safemngm';
-
-// Atlas URL  - replace UUU with user, PPP with password, XXX with hostname
-// const url = 'mongodb+srv://UUU:PPP@cluster0-XXX.mongodb.net/issuetracker?retryWrites=true';
-
-// mLab URL - replace UUU with user, PPP with password, XXX with hostname
-// const url = 'mongodb://UUU:PPP@XXX.mlab.com:33533/issuetracker';
+const url = 'mongodb://localhost/NUSAssistant';
 
 let db;
-let aboutMessage = "Safe Management";
+let aboutMessage = "NUS Assistant";
 
 const resolvers = {
   Query: {
