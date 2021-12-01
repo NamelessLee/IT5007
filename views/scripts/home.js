@@ -1,6 +1,5 @@
-console.log("starts at " + performance.now());
-function getHealth() {
-  console.log("fetching starts at " + performance.now());
+async function getHealth() {
+  time1 = performance.now();
   if (sessionStorage.getItem("status") != null) {
     let status = document.getElementById('status');
     let temperature = document.getElementById('temperature');
@@ -10,9 +9,9 @@ function getHealth() {
   } else {
     const username = sessionStorage.getItem('username');
     console.log(username);
-    getHealthFromDB(username);
+    await getHealthFromDB(username);
   }
-  console.log("fetching ends at " + performance.now());
+  console.log("fetching takes" + (performance.now() - time1));
 }
 
 function changeColor(status) {

@@ -8,7 +8,7 @@ db.reviews.remove({});
 const initialUsers = [{
   id: 1,
   username: 'A0242720R',
-  password: '12345678',
+  password: '123456',
   name: 'Xinyue',
   type: ['student', 'admin'],
   dorm: '1-101',
@@ -16,7 +16,7 @@ const initialUsers = [{
 }, {
   id: 2,
   username: 'A0242694X',
-  password: '12345678',
+  password: '123456',
   name: 'Qianqian',
   type: ['student', 'admin'],
   dorm: '1-101',
@@ -24,7 +24,7 @@ const initialUsers = [{
 }, {
   id: 3,
   username: 'PKV',
-  password: '12345678',
+  password: '123456',
   name: 'Dr.Prasanna',
   type: ['staff', 'tutor'],
   dorm: '2-101',
@@ -32,7 +32,7 @@ const initialUsers = [{
 }, {
   id: 4,
   username: '1',
-  password: '1',
+  password: '123456',
   name: 'Corona',
   type: ['student', 'tutor'],
   dorm: '3-101',
@@ -40,7 +40,7 @@ const initialUsers = [{
 }, {
   id: 5,
   username: '2',
-  password: '2',
+  password: '123456',
   name: 'Virus',
   type: ['student'],
   dorm: '3-102',
