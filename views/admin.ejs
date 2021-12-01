@@ -40,15 +40,13 @@
         </div>
         <div>
             <ul style="list-style-type: none;margin: 0;padding: 0;overflow: hidden;border: 1px solid #e7e7e7;background-color: #f3f3f3;">
-                <li style="float: left;"><a style="display: block; color: #666; text-align: center; padding: 14px 16px; text-decoration: none;"class="active" href="#userm">User Management</a></li>
-                <li style="float: left;"><a style="display: block; color: #666; text-align: center; padding: 14px 16px; text-decoration: none;" class="myNavi" href="#rrm">Region Risk Management</a></li>
-                <li style="float: left;"><a style="display: block; color: #666; text-align: center; padding: 14px 16px; text-decoration: none;" class="myNavi" href="#ccm">Close Contact Management</a></li>
-                <li style="float: left;"><a style="display: block; color: #666; text-align: center; padding: 14px 16px; text-decoration: none;" class="myNavi" href="#bm">Building Management</a></li>
-                <li style="float: left;"><a style="display: block; color: #666; text-align: center; padding: 14px 16px; text-decoration: none;" class="myNavi" href="#tm">Tutor Management</a></li>
-                <li style="float: left;"><a style="display: block; color: #666; text-align: center; padding: 14px 16px; text-decoration: none;" class="myNavi" href="#bltm">Bulletin Management</a></li>
+                <li style="float: left;"><a style="display: block; color: #666; text-align: center; padding: 14px 16px; text-decoration: none;" class="myNavi" onClick="loadUserM()">User Management</a></li>
+                <li style="float: left;"><a style="display: block; color: #666; text-align: center; padding: 14px 16px; text-decoration: none;" class="myNavi" onClick="loadCCM()">Close Contact Management</a></li>
+                <li style="float: left;"><a style="display: block; color: #666; text-align: center; padding: 14px 16px; text-decoration: none;" class="myNavi" onClick="loadBuildingM()">Building Management</a></li>
+                <li style="float: left;"><a style="display: block; color: #666; text-align: center; padding: 14px 16px; text-decoration: none;" class="myNavi" onClick="loadBulletinM()">Bulletin Management</a></li>
               </ul>
         </div>
-        <div style="background-color: peachpuff;">
+        <div id="UM" style="background-color: peachpuff;">
             <h3 style="text-align: center;">User Info</h3>
             <div class="btn-group" style="margin-left: 20px;">
                 <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -152,6 +150,51 @@
                 </tbody>
             </table> 
         </div>
+        <div id="BLTM" style="display: none;">
+          <h3 style="text-align: center;">Please edit contents of the bulletin board here:</h3>
+          <div class="col-4 offset-4">
+            <form>
+              <input id="BLTcontent" type="text" class="form-control"></input>
+              <br>
+              <div style="text-align: center;">
+                <input type="button" class="btn btn-primary" onClick="editBLT(this.form)" value="Save"></input>
+              </div>
+              
+            </form>
+          </div>
+          
+        </div>
+
+        <div id="BDM" style="display: none;">
+          <h3 style="text-align: center;">Please edit contents of the building Info here:</h3>
+          <div class="col-4 offset-4">
+            <form>
+              <input id="BDcontent" type="text" class="form-control"></input>
+              <br>
+              <div style="text-align: center;">
+                <input type="button" class="btn btn-primary" onClick="editBD(this.form)" value="Save"></input>
+              </div>
+              
+            </form>
+          </div>
+        </div>
+
+          <div id="CCM" style="display: none;">
+            <h3 style="text-align: center;">Please edit contents of the building Info here:</h3>
+            <div class="col-4 offset-4">
+              <form>
+                <input id="CCcontent" type="text" class="form-control"></input>
+                <br>
+                <div style="text-align: center;">
+                  <input type="button" class="btn btn-primary" onClick="editBD(this.form)" value="Save"></input>
+                </div>
+                
+              </form>
+            </div>
+          </div>
+          
+          
+        </div>
        </div> 
         <script>
           window.addEventListener('load', loadHandler);
@@ -199,6 +242,9 @@
               
             }
             document.getElementById("UserTable").innerHTML = str;
+
+            var bltcontent = "Yesterday, 15 tutors updated available time slots. Yesterday, 2 students of NUS were diagnosed with COVID-19. Students of CS3884 and ST5050 please monitor your health status and avoid contacts with others."
+            document.getElementById("BLTcontent").value = bltcontent;
           }
 
           async function handleDelete(username){
@@ -267,6 +313,36 @@
               alert("No traces records found.")
             }
           }
+
+          function loadUserM(){
+            document.getElementById("UM").style.display="block";
+            document.getElementById("BLTM").style.display="none";
+            document.getElementById("BDM").style.display="none";
+            document.getElementById("CCM").style.display="none";
+          }
+
+          function loadBulletinM(){
+            document.getElementById("BLTM").style.display="block";
+            document.getElementById("UM").style.display="none";
+            document.getElementById("BDM").style.display="none";
+            document.getElementById("CCM").style.display="none";
+          }
+
+          function loadBuildingM(){
+            document.getElementById("BDM").style.display="block";
+            document.getElementById("UM").style.display="none";
+            document.getElementById("BLTM").style.display="none";
+            document.getElementById("CCM").style.display="none";
+          }
+
+          function loadCCM(){
+            console.log("CCM");
+            document.getElementById("BDM").style.display="none";
+            document.getElementById("UM").style.display="none";
+            document.getElementById("BLTM").style.display="none";
+            document.getElementById("CCM").style.display="block";
+          }
+          
 
           
         </script>
