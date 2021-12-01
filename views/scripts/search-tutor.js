@@ -500,6 +500,5 @@ var AllContents = /*#__PURE__*/function (_React$Component2) {
 
   return AllContents;
 }(React.Component);
-
 var allContents = /*#__PURE__*/React.createElement(AllContents, null);
 ReactDOM.render(allContents, document.getElementById('contents'));

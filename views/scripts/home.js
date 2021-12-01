@@ -37,7 +37,9 @@ async function getHealthFromDB(username) {
 }
 
 window.addEventListener('load', event => {
+  console.log(performance.now());
   getHealth();
+  console.log(performance.now());
 }); ///////////////////////////////////////////////////////////////
 
 async function graphQLFetch(query, variables = {}) {

@@ -19,7 +19,7 @@
   <hr>
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
-      <a href="/" class="nav-link" id="sidebarHome">
+      <a href="/home" class="nav-link" id="sidebarHome">
         Home
       </a>
     </li>
@@ -56,23 +56,13 @@
   </ul>
   <hr>
   <div class="dropdown">
-    <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle text-light" id="dropdownUser1"
+    <a href="#" class="d-flex align-items-center text-decoration-none text-light" id="dropdownUser1"
       data-bs-toggle="dropdown" aria-expanded="false">
       <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
       <span id="currentUser" class="text-light">Please Login</span>
     </a>
-    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser1">
-      <li><a class="dropdown-item" href="#" onclick="genSysMessage()">System messages</a></li>
-      <li>
-        <hr class="dropdown-divider">
-      </li>
-      <li><a class="dropdown-item" href="#">Sign out</a></li>
-    </ul>
   </div>
 </div>
 <script>
-  function genSysMessage() {
-    alert("Sign up to be a tutor: 2 students would like to take tutor class of CS3001")
-  }
   window.addEventListener('load', (event) => { document.getElementById("currentUser").innerText = sessionStorage.getItem('name'); });
 </script>

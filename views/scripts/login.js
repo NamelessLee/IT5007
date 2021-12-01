@@ -20,7 +20,7 @@ async function handleLoginSubmit() {
     sessionStorage.setItem('type', userInDb.type);
     alert("successful on login"); //提示成功
 
-    window.location.href = '/'; //跳转回主页
+    window.location.href = '/home'; //跳转回主页
 
     document.getElementById("currentUser").innerText = userInDb.name; //主页currentUser显示登入用户的名字
   } else {
@@ -45,7 +45,16 @@ async function findUser(user) {
   });
   console.log("data= " + JSON.stringify(data));
   return data.User[0];
-} ///////////////////////////////////////////////////////////////
+} 
+
+
+window.addEventListener('load', sessionStorage.clear());
+
+
+
+
+
+///////////////////////////////////////////////////////////////
 
 
 async function graphQLFetch(query, variables = {}) {
