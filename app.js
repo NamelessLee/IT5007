@@ -16,11 +16,20 @@ app.use(express.urlencoded({extended: true}));
 
 
 app.get('/home',(req,res) => {
+    var start = performance.now();
     res.render('home');
+    var end = performance.now();
+    var time = end - start;
+    console.log(time);
 });
 
 app.get('/', (req,res) => {
+    var start = performance.now();
     res.render('login');
+    var end = performance.now();
+    var time = end - start;
+    console.log("Landing page load time: " + time + " ms.");
+
 });
 
 app.get('/sign-up', (req, res) => {
@@ -50,7 +59,11 @@ app.get('/admin', (req, res) => {
 // tutor module
 // first enter tutor search from homepage sidebar
 app.get('/search-tutor', (req, res) => {
+    var start = performance.now();
     res.render('search-tutor');
+    var end = performance.now();
+    var time = end - start;
+    console.log("search tutor Load Time: " + time + " ms.");
 })
 
 app.get('/display-tutor/:username', (req, res) => {
