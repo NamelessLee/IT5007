@@ -1,3 +1,4 @@
+console.log("starts at " + performance.now());
 const url = window.location.href;
 const arr = url.split("/");
 const username = arr[arr.length - 1];
@@ -50,17 +51,30 @@ async function loadData() {
         const wrapReviews = document.getElementById('wrapReviews');
         wrapReviews.innerHTML = "";
         for (let review of reviews) {
-            wrapReviews.innerHTML += `<div class="d-flex justify-content-between">
+            wrapReviews.innerHTML += `
+            <div class="row border-bottom py-1">
+            <div class="stars">
+              <span id="star1" class="fa fa-star checked"></span>
+              <span id="star2" class="fa fa-star checked"></span>
+              <span id="star3" class="fa fa-star checked"></span>
+              <span id="star4" class="fa fa-star checked"></span>
+              <span id="star5" class="fa fa-star checked"></span>
+            </div>
+            <div>
+            <div class="d-flex justify-content-between">
             <div><strong>${review.studentName}</strong> <span class="text-muted">Student from NUS</span></div>
             <div class="fst-italic">${review.date}</div>
           </div>
-          <div class="mb-3">
+          <div>
             ${review.content}
-          </div>`;
+          </div>
+            </div>
+          </div>`
+            ;
         }
     }
-
 }
+
 
 window.addEventListener('load', loadData());
 //-----------------------------------------------------
@@ -94,3 +108,4 @@ async function graphQLFetch(query, variables = {}) {
         alert(`Error in sending data to server: ${e.message}`);
     }
 }
+console.log("ends at " + performance.now());

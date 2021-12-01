@@ -1,3 +1,4 @@
+console.log("starts at " + performance.now());
 const dateRegex = new RegExp('^\\d\\d\\d\\d-\\d\\d-\\d\\d');
 
 async function handleLoginSubmit() {
@@ -15,7 +16,6 @@ async function handleLoginSubmit() {
   if (pwd == user.password) {
     //successful on login
     sessionStorage.setItem('name', userInDb.name); //当前登录用户存进session    
-
     sessionStorage.setItem('username', userInDb.username);
     sessionStorage.setItem('type', userInDb.type);
     alert("successful on login"); //提示成功
@@ -49,11 +49,8 @@ async function findUser(user) {
 
 
 window.addEventListener('load', sessionStorage.clear());
-
-
-
-
-
+console.log("ends at " + performance.now());
+console.log(performance.getEntriesByType('resource'));
 ///////////////////////////////////////////////////////////////
 
 

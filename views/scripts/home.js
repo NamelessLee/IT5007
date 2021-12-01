@@ -1,4 +1,6 @@
+console.log("starts at " + performance.now());
 function getHealth() {
+  console.log("fetching starts at " + performance.now());
   if (sessionStorage.getItem("status") != null) {
     let status = document.getElementById('status');
     let temperature = document.getElementById('temperature');
@@ -10,6 +12,7 @@ function getHealth() {
     console.log(username);
     getHealthFromDB(username);
   }
+  console.log("fetching ends at " + performance.now());
 }
 
 function changeColor(status) {
@@ -17,6 +20,7 @@ function changeColor(status) {
 }
 
 async function getHealthFromDB(username) {
+  console.log("fetching from db starts at " + performance.now());
   const query = `query {
         Health(username: "${username}")
         {
@@ -34,13 +38,16 @@ async function getHealthFromDB(username) {
   status.innerText = health.status;
   document.getElementById("temperature").innerText = health.temperature;
   changeColor(status);
+  console.log("fetching from db ends at " + performance.now());
 }
 
 window.addEventListener('load', event => {
-  console.log(performance.now());
   getHealth();
-  console.log(performance.now());
-}); ///////////////////////////////////////////////////////////////
+}); 
+
+console.log("ends at " + performance.now());
+console.log(performance.getEntries());
+///////////////////////////////////////////////////////////////
 
 async function graphQLFetch(query, variables = {}) {
   console.log("graphQlFetch!!!!");
@@ -78,7 +85,4 @@ async function graphQLFetch(query, variables = {}) {
   } catch (e) {
     alert(`Error in sending data to server: ${e.message}`);
   }
-} // function jsonDateReviver(key, value) {
-//     if (dateRegex.test(value)) return new Date(value);
-//     return value;
-// }
+} 
